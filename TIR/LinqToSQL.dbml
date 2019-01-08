@@ -2,7 +2,7 @@
   <Connection Mode="AppSettings" ConnectionString="Data Source=LENOVO-PC;Initial Catalog=TransportCompany;Integrated Security=True" SettingsObjectName="TIR.Properties.Settings" SettingsPropertyName="TransportCompanyConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Ciezarowki" Member="Ciezarowkis">
     <Type Name="Ciezarowki">
-      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="rocznik" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="maksymalne_dopuszczalne_obciazenie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="kolor" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
@@ -54,7 +54,7 @@
       <Column Name="adres_docelowy" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="data_nadania" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
       <Column Name="data_odbioru" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
-      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="id_nadawcy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="id_odbiorcy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Klienci_Ladunki" Member="Klienci" ThisKey="id_nadawcy" OtherKey="id_klienta" Type="Klienci" IsForeignKey="true" />
@@ -83,7 +83,7 @@
   </Table>
   <Table Name="dbo.Przeglady" Member="Przegladies">
     <Type Name="Przeglady">
-      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="data_przegladu" Type="System.DateTime" DbType="SmallDateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="nr_nip_serwisu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="data_nastepnego_serwisu" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
@@ -94,10 +94,11 @@
   <Table Name="dbo.Rejestr_napraw" Member="Rejestr_napraws">
     <Type Name="Rejestr_napraw">
       <Column Name="nr_faktury" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="data_naprawy" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
       <Column Name="nr_nip_serwisu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="koszt_robocizny" Type="System.Decimal" DbType="Decimal(12,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Rejestr_napraw_Wymienione_czesci" Member="Wymienione_czescis" ThisKey="nr_faktury" OtherKey="nr_faktury" Type="Wymienione_czesci" />
       <Association Name="Firmy_serwisujace_Rejestr_napraw" Member="Firmy_serwisujace" ThisKey="nr_nip_serwisu" OtherKey="nr_nip" Type="Firmy_serwisujace" IsForeignKey="true" />
       <Association Name="Ciezarowki_Rejestr_napraw" Member="Ciezarowki" ThisKey="nr_rejestracyjny_ciezarowki" OtherKey="nr_rejestracyjny_ciezarowki" Type="Ciezarowki" IsForeignKey="true" />
     </Type>
@@ -107,6 +108,7 @@
       <Column Name="id_czesci" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="nr_faktury" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="Czesci_Wymienione_czesci" Member="Czesci" ThisKey="id_czesci" OtherKey="id_czesci" Type="Czesci" IsForeignKey="true" />
+      <Association Name="Rejestr_napraw_Wymienione_czesci" Member="Rejestr_napraw" ThisKey="nr_faktury" OtherKey="nr_faktury" Type="Rejestr_napraw" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

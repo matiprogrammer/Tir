@@ -121,15 +121,14 @@ namespace TIR
 
         private void SearchTir(object sender, RoutedEventArgs e)
         {
-            int nr_rejestracyjny,rocznik;
-            var result1 = Int32.TryParse(TirSearching.Text, out nr_rejestracyjny);
+            int rocznik;
+            
             var result2 = Int32.TryParse(TirSearching.Text, out rocznik);
-            if (!result1)
-                nr_rejestracyjny = 0;
+
             if (!result2)
                 rocznik = 0;
             var searchTirs = from p in dc.Ciezarowkis
-                                 where p.model.Contains(TirSearching.Text) || p.producent.Contains(TirSearching.Text) || p.nr_pesel_kierowcy.Contains(TirSearching.Text) || p.nr_rejestracyjny_ciezarowki== nr_rejestracyjny || p.rocznik==rocznik
+                                 where p.model.Contains(TirSearching.Text) || p.producent.Contains(TirSearching.Text) || p.nr_pesel_kierowcy.Contains(TirSearching.Text) || p.nr_rejestracyjny_ciezarowki== TirSearching.Text || p.rocznik==rocznik
                                  select p;
             if (searchTirs != null)
                 tirList.ItemsSource = searchTirs;
@@ -151,7 +150,7 @@ namespace TIR
         private void DeleteTir(object sender, RoutedEventArgs e)
         {
             dynamic selectedItem = tirList.SelectedItem;
-            int nr_rejestracyjny = selectedItem.nr_rejestracyjny_ciezarowki;
+            string nr_rejestracyjny = selectedItem.nr_rejestracyjny_ciezarowki;
             var employe = from p in dc.Ciezarowkis
                           where p.nr_rejestracyjny_ciezarowki == nr_rejestracyjny
                           select p;
@@ -173,6 +172,11 @@ namespace TIR
                 TirDeleteButton.IsEnabled = false;
                 TirEditButton.IsEnabled = false;
             }
+        }
+
+        private void tirChoosen(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("asdasdasd");
         }
     }
 }

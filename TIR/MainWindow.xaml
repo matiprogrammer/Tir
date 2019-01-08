@@ -81,7 +81,7 @@
                 <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="NewTir" />
                 <Button Content="Edytuj" Name="TirEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="EditTir" />
                 <Button Content="Usuń" Name="TirDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteTir" />
-                <ListView Name="tirList" HorizontalContentAlignment="Stretch" SelectionChanged="TirSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                <ListView Name="tirList" HorizontalContentAlignment="Stretch" MouseDoubleClick="tirChoosen" SelectionChanged="TirSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>

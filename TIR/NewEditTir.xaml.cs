@@ -63,7 +63,7 @@ namespace TIR
             if (!isEdit)
             {
                 Ciezarowki tir = new Ciezarowki();
-                tir.nr_rejestracyjny_ciezarowki = Int32.Parse(nrBox.Text);
+                tir.nr_rejestracyjny_ciezarowki = nrBox.Text;
                 tir.rocznik = Int32.Parse(yearBox.Text);
                 tir.maksymalne_dopuszczalne_obciazenie = Int32.Parse(loadBox.Text);
                 tir.model = modelBox.Text;
@@ -75,12 +75,12 @@ namespace TIR
             else
             {
                 var update = from p in ((MainWindow)Application.Current.MainWindow).dc.Ciezarowkis
-                             where p.nr_rejestracyjny_ciezarowki == Int32.Parse(nrBox.Text)
+                             where p.nr_rejestracyjny_ciezarowki == nrBox.Text
                              select p;
 
                 foreach (var tir in update)
                 {
-                    tir.nr_rejestracyjny_ciezarowki = Int32.Parse(nrBox.Text);
+                    tir.nr_rejestracyjny_ciezarowki = nrBox.Text;
                     tir.rocznik = Int32.Parse(yearBox.Text);
                     tir.maksymalne_dopuszczalne_obciazenie = Int32.Parse(loadBox.Text);
                     tir.model = modelBox.Text;

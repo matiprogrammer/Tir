@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Nr rejestracyjny:" Margin="6,10,6,6" HorizontalAlignment="Left" />
-        <TextBox Grid.Column="1" Padding="2" Margin="3,10,3,3" Name="nrBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox Grid.Column="1" Padding="2" Margin="3,10,3,3" Name="nrBox" VerticalContentAlignment="Center"/>
         <TextBlock Text="Rocznik:" Margin="6" HorizontalAlignment="Left" Grid.Row="1"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="1" Name="yearBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
         <TextBlock Text="Model:" Margin="6" HorizontalAlignment="Left" Grid.Row="2"/>

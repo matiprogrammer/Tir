@@ -179,7 +179,7 @@ namespace TIR
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _nr_rejestracyjny_ciezarowki;
+		private string _nr_rejestracyjny_ciezarowki;
 		
 		private int _rocznik;
 		
@@ -205,7 +205,7 @@ namespace TIR
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onnr_rejestracyjny_ciezarowkiChanging(int value);
+    partial void Onnr_rejestracyjny_ciezarowkiChanging(string value);
     partial void Onnr_rejestracyjny_ciezarowkiChanged();
     partial void OnrocznikChanging(int value);
     partial void OnrocznikChanged();
@@ -230,8 +230,8 @@ namespace TIR
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nr_rejestracyjny_ciezarowki", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int nr_rejestracyjny_ciezarowki
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nr_rejestracyjny_ciezarowki", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string nr_rejestracyjny_ciezarowki
 		{
 			get
 			{
@@ -1068,7 +1068,7 @@ namespace TIR
 		
 		private System.Nullable<System.DateTime> _data_odbioru;
 		
-		private int _nr_rejestracyjny_ciezarowki;
+		private string _nr_rejestracyjny_ciezarowki;
 		
 		private int _id_nadawcy;
 		
@@ -1100,7 +1100,7 @@ namespace TIR
     partial void Ondata_nadaniaChanged();
     partial void Ondata_odbioruChanging(System.Nullable<System.DateTime> value);
     partial void Ondata_odbioruChanged();
-    partial void Onnr_rejestracyjny_ciezarowkiChanging(int value);
+    partial void Onnr_rejestracyjny_ciezarowkiChanging(string value);
     partial void Onnr_rejestracyjny_ciezarowkiChanged();
     partial void Onid_nadawcyChanging(int value);
     partial void Onid_nadawcyChanged();
@@ -1276,8 +1276,8 @@ namespace TIR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nr_rejestracyjny_ciezarowki", DbType="Int NOT NULL")]
-		public int nr_rejestracyjny_ciezarowki
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nr_rejestracyjny_ciezarowki", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string nr_rejestracyjny_ciezarowki
 		{
 			get
 			{
@@ -1443,7 +1443,7 @@ namespace TIR
 					}
 					else
 					{
-						this._nr_rejestracyjny_ciezarowki = default(int);
+						this._nr_rejestracyjny_ciezarowki = default(string);
 					}
 					this.SendPropertyChanged("Ciezarowki");
 				}
@@ -1821,7 +1821,7 @@ namespace TIR
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _nr_rejestracyjny_ciezarowki;
+		private string _nr_rejestracyjny_ciezarowki;
 		
 		private System.DateTime _data_przegladu;
 		
@@ -1837,7 +1837,7 @@ namespace TIR
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onnr_rejestracyjny_ciezarowkiChanging(int value);
+    partial void Onnr_rejestracyjny_ciezarowkiChanging(string value);
     partial void Onnr_rejestracyjny_ciezarowkiChanged();
     partial void Ondata_przegladuChanging(System.DateTime value);
     partial void Ondata_przegladuChanged();
@@ -1854,8 +1854,8 @@ namespace TIR
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nr_rejestracyjny_ciezarowki", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int nr_rejestracyjny_ciezarowki
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nr_rejestracyjny_ciezarowki", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string nr_rejestracyjny_ciezarowki
 		{
 			get
 			{
@@ -2003,7 +2003,7 @@ namespace TIR
 					}
 					else
 					{
-						this._nr_rejestracyjny_ciezarowki = default(int);
+						this._nr_rejestracyjny_ciezarowki = default(string);
 					}
 					this.SendPropertyChanged("Ciezarowki");
 				}
@@ -2039,13 +2039,15 @@ namespace TIR
 		
 		private int _nr_faktury;
 		
-		private int _nr_rejestracyjny_ciezarowki;
+		private string _nr_rejestracyjny_ciezarowki;
 		
 		private System.DateTime _data_naprawy;
 		
 		private int _nr_nip_serwisu;
 		
 		private decimal _koszt_robocizny;
+		
+		private EntitySet<Wymienione_czesci> _Wymienione_czescis;
 		
 		private EntityRef<Firmy_serwisujace> _Firmy_serwisujace;
 		
@@ -2057,7 +2059,7 @@ namespace TIR
     partial void OnCreated();
     partial void Onnr_fakturyChanging(int value);
     partial void Onnr_fakturyChanged();
-    partial void Onnr_rejestracyjny_ciezarowkiChanging(int value);
+    partial void Onnr_rejestracyjny_ciezarowkiChanging(string value);
     partial void Onnr_rejestracyjny_ciezarowkiChanged();
     partial void Ondata_naprawyChanging(System.DateTime value);
     partial void Ondata_naprawyChanged();
@@ -2069,6 +2071,7 @@ namespace TIR
 		
 		public Rejestr_napraw()
 		{
+			this._Wymienione_czescis = new EntitySet<Wymienione_czesci>(new Action<Wymienione_czesci>(this.attach_Wymienione_czescis), new Action<Wymienione_czesci>(this.detach_Wymienione_czescis));
 			this._Firmy_serwisujace = default(EntityRef<Firmy_serwisujace>);
 			this._Ciezarowki = default(EntityRef<Ciezarowki>);
 			OnCreated();
@@ -2094,8 +2097,8 @@ namespace TIR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nr_rejestracyjny_ciezarowki", DbType="Int NOT NULL")]
-		public int nr_rejestracyjny_ciezarowki
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nr_rejestracyjny_ciezarowki", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string nr_rejestracyjny_ciezarowki
 		{
 			get
 			{
@@ -2182,6 +2185,19 @@ namespace TIR
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rejestr_napraw_Wymienione_czesci", Storage="_Wymienione_czescis", ThisKey="nr_faktury", OtherKey="nr_faktury")]
+		public EntitySet<Wymienione_czesci> Wymienione_czescis
+		{
+			get
+			{
+				return this._Wymienione_czescis;
+			}
+			set
+			{
+				this._Wymienione_czescis.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Firmy_serwisujace_Rejestr_napraw", Storage="_Firmy_serwisujace", ThisKey="nr_nip_serwisu", OtherKey="nr_nip", IsForeignKey=true)]
 		public Firmy_serwisujace Firmy_serwisujace
 		{
@@ -2243,7 +2259,7 @@ namespace TIR
 					}
 					else
 					{
-						this._nr_rejestracyjny_ciezarowki = default(int);
+						this._nr_rejestracyjny_ciezarowki = default(string);
 					}
 					this.SendPropertyChanged("Ciezarowki");
 				}
@@ -2269,6 +2285,18 @@ namespace TIR
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_Wymienione_czescis(Wymienione_czesci entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rejestr_napraw = this;
+		}
+		
+		private void detach_Wymienione_czescis(Wymienione_czesci entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rejestr_napraw = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Wymienione_czesci")]
@@ -2283,6 +2311,8 @@ namespace TIR
 		
 		private EntityRef<Czesci> _Czesci;
 		
+		private EntityRef<Rejestr_napraw> _Rejestr_napraw;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2296,6 +2326,7 @@ namespace TIR
 		public Wymienione_czesci()
 		{
 			this._Czesci = default(EntityRef<Czesci>);
+			this._Rejestr_napraw = default(EntityRef<Rejestr_napraw>);
 			OnCreated();
 		}
 		
@@ -2334,6 +2365,10 @@ namespace TIR
 			{
 				if ((this._nr_faktury != value))
 				{
+					if (this._Rejestr_napraw.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.Onnr_fakturyChanging(value);
 					this.SendPropertyChanging();
 					this._nr_faktury = value;
@@ -2373,6 +2408,40 @@ namespace TIR
 						this._id_czesci = default(int);
 					}
 					this.SendPropertyChanged("Czesci");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rejestr_napraw_Wymienione_czesci", Storage="_Rejestr_napraw", ThisKey="nr_faktury", OtherKey="nr_faktury", IsForeignKey=true)]
+		public Rejestr_napraw Rejestr_napraw
+		{
+			get
+			{
+				return this._Rejestr_napraw.Entity;
+			}
+			set
+			{
+				Rejestr_napraw previousValue = this._Rejestr_napraw.Entity;
+				if (((previousValue != value) 
+							|| (this._Rejestr_napraw.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Rejestr_napraw.Entity = null;
+						previousValue.Wymienione_czescis.Remove(this);
+					}
+					this._Rejestr_napraw.Entity = value;
+					if ((value != null))
+					{
+						value.Wymienione_czescis.Add(this);
+						this._nr_faktury = value.nr_faktury;
+					}
+					else
+					{
+						this._nr_faktury = default(int);
+					}
+					this.SendPropertyChanged("Rejestr_napraw");
 				}
 			}
 		}
