@@ -113,7 +113,7 @@ namespace TIR
 
         private void NewTir(object sender, RoutedEventArgs e)
         {
-            NewEditTir tirWindow = new NewEditTir();
+            NewEditTir tirWindow = new NewEditTir(false);
             tirWindow.ShowDialog();
             fillTirList();
 
@@ -121,12 +121,15 @@ namespace TIR
 
         private void SearchTir(object sender, RoutedEventArgs e)
         {
-            int nr_rejestracyjny;
-            var result = Int32.TryParse(TirSearching.Text, out nr_rejestracyjny);
-            if (!result)
+            int nr_rejestracyjny,rocznik;
+            var result1 = Int32.TryParse(TirSearching.Text, out nr_rejestracyjny);
+            var result2 = Int32.TryParse(TirSearching.Text, out rocznik);
+            if (!result1)
                 nr_rejestracyjny = 0;
+            if (!result2)
+                rocznik = 0;
             var searchTirs = from p in dc.Ciezarowkis
-                                 where p.model.Contains(TirSearching.Text) || p.producent.Contains(TirSearching.Text) || p.nr_pesel_kierowcy.Contains(TirSearching.Text) || p.nr_rejestracyjny_ciezarowki== nr_rejestracyjny
+                                 where p.model.Contains(TirSearching.Text) || p.producent.Contains(TirSearching.Text) || p.nr_pesel_kierowcy.Contains(TirSearching.Text) || p.nr_rejestracyjny_ciezarowki== nr_rejestracyjny || p.rocznik==rocznik
                                  select p;
             if (searchTirs != null)
                 tirList.ItemsSource = searchTirs;
@@ -140,7 +143,9 @@ namespace TIR
 
         private void EditTir(object sender, RoutedEventArgs e)
         {
-
+            NewEditTir tirWindow = new NewEditTir(true);
+            tirWindow.ShowDialog();
+            
         }
 
         private void DeleteTir(object sender, RoutedEventArgs e)
