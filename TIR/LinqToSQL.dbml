@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TransportCompany" Class="LinqToSQLDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LENOVO-PC;Initial Catalog=TransportCompany;Integrated Security=True" SettingsObjectName="TIR.Properties.Settings" SettingsPropertyName="TransportCompanyConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Ciezarowki" Member="Ciezarowkis">
+    <Type Name="Ciezarowki">
+      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="rocznik" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="maksymalne_dopuszczalne_obciazenie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="kolor" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="model" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="producent" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="nr_pesel_kierowcy" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Association Name="Ciezarowki_Ladunki" Member="Ladunkis" ThisKey="nr_rejestracyjny_ciezarowki" OtherKey="nr_rejestracyjny_ciezarowki" Type="Ladunki" />
+      <Association Name="Ciezarowki_Przeglady" Member="Przegladies" ThisKey="nr_rejestracyjny_ciezarowki" OtherKey="nr_rejestracyjny_ciezarowki" Type="Przeglady" />
+      <Association Name="Ciezarowki_Rejestr_napraw" Member="Rejestr_napraws" ThisKey="nr_rejestracyjny_ciezarowki" OtherKey="nr_rejestracyjny_ciezarowki" Type="Rejestr_napraw" />
+      <Association Name="Pracownicy_Ciezarowki" Member="Pracownicy" ThisKey="nr_pesel_kierowcy" OtherKey="nr_pesel" Type="Pracownicy" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Czesci" Member="Czescis">
+    <Type Name="Czesci">
+      <Column Name="id_czesci" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nazwa_czesci" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="koszt_czesci" Type="System.Decimal" DbType="Decimal(12,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Czesci_Wymienione_czesci" Member="Wymienione_czescis" ThisKey="id_czesci" OtherKey="id_czesci" Type="Wymienione_czesci" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Firmy_serwisujace" Member="Firmy_serwisujaces">
+    <Type Name="Firmy_serwisujace">
+      <Column Name="nr_nip" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nazwa" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="adres" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="nr_telefonu" Type="System.String" DbType="VarChar(9) NOT NULL" CanBeNull="false" />
+      <Association Name="Firmy_serwisujace_Przeglady" Member="Przegladies" ThisKey="nr_nip" OtherKey="nr_nip_serwisu" Type="Przeglady" />
+      <Association Name="Firmy_serwisujace_Rejestr_napraw" Member="Rejestr_napraws" ThisKey="nr_nip" OtherKey="nr_nip_serwisu" Type="Rejestr_napraw" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Klienci" Member="Kliencis">
+    <Type Name="Klienci">
+      <Column Name="id_klienta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="imie" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="nazwisko" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="adres_zamieszkania" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="nr_telefonu" Type="System.String" DbType="VarChar(9) NOT NULL" CanBeNull="false" />
+      <Association Name="Klienci_Ladunki" Member="Ladunkis" ThisKey="id_klienta" OtherKey="id_nadawcy" Type="Ladunki" />
+      <Association Name="Klienci_Ladunki1" Member="Ladunkis1" ThisKey="id_klienta" OtherKey="id_odbiorcy" Type="Ladunki" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ladunki" Member="Ladunkis">
+    <Type Name="Ladunki">
+      <Column Name="id_ladunku" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="waga" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nazwa_ladunku" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="rodzaj_ladunku" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="adres_startowy" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="adres_docelowy" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="data_nadania" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="data_odbioru" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_nadawcy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_odbiorcy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Klienci_Ladunki" Member="Klienci" ThisKey="id_nadawcy" OtherKey="id_klienta" Type="Klienci" IsForeignKey="true" />
+      <Association Name="Klienci_Ladunki1" Member="Klienci1" ThisKey="id_odbiorcy" OtherKey="id_klienta" Type="Klienci" IsForeignKey="true" />
+      <Association Name="Ciezarowki_Ladunki" Member="Ciezarowki" ThisKey="nr_rejestracyjny_ciezarowki" OtherKey="nr_rejestracyjny_ciezarowki" Type="Ciezarowki" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Poziomy_zarobkow" Member="Poziomy_zarobkows">
+    <Type Name="Poziomy_zarobkow">
+      <Column Name="nr_przedzialu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dolna_granica" Type="System.Decimal" DbType="Decimal(12,2) NOT NULL" CanBeNull="false" />
+      <Column Name="gorna_granica" Type="System.Decimal" DbType="Decimal(12,2) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pracownicy" Member="Pracownicies">
+    <Type Name="Pracownicy">
+      <Column Name="nr_pesel" Type="System.String" DbType="VarChar(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="imie" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="nazwisko" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pensja" Type="System.Decimal" DbType="Decimal(12,2) NOT NULL" CanBeNull="false" />
+      <Column Name="stanowisko" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="adres_zamieszkania" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="adres_zatrudnienia" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Pracownicy_Ciezarowki" Member="Ciezarowkis" ThisKey="nr_pesel" OtherKey="nr_pesel_kierowcy" Type="Ciezarowki" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Przeglady" Member="Przegladies">
+    <Type Name="Przeglady">
+      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="data_przegladu" Type="System.DateTime" DbType="SmallDateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nr_nip_serwisu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="data_nastepnego_serwisu" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Firmy_serwisujace_Przeglady" Member="Firmy_serwisujace" ThisKey="nr_nip_serwisu" OtherKey="nr_nip" Type="Firmy_serwisujace" IsForeignKey="true" />
+      <Association Name="Ciezarowki_Przeglady" Member="Ciezarowki" ThisKey="nr_rejestracyjny_ciezarowki" OtherKey="nr_rejestracyjny_ciezarowki" Type="Ciezarowki" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rejestr_napraw" Member="Rejestr_napraws">
+    <Type Name="Rejestr_napraw">
+      <Column Name="nr_faktury" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="data_naprawy" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="nr_nip_serwisu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="koszt_robocizny" Type="System.Decimal" DbType="Decimal(12,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Firmy_serwisujace_Rejestr_napraw" Member="Firmy_serwisujace" ThisKey="nr_nip_serwisu" OtherKey="nr_nip" Type="Firmy_serwisujace" IsForeignKey="true" />
+      <Association Name="Ciezarowki_Rejestr_napraw" Member="Ciezarowki" ThisKey="nr_rejestracyjny_ciezarowki" OtherKey="nr_rejestracyjny_ciezarowki" Type="Ciezarowki" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Wymienione_czesci" Member="Wymienione_czescis">
+    <Type Name="Wymienione_czesci">
+      <Column Name="id_czesci" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nr_faktury" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Czesci_Wymienione_czesci" Member="Czesci" ThisKey="id_czesci" OtherKey="id_czesci" Type="Czesci" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

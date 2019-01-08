@@ -1,0 +1,54 @@
+﻿<Window x:Class="TIR.NewEditEmploye"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TIR"
+        mc:Ignorable="d"
+        Title="NewEditEmploye" Height="450" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Pesel:" Margin="6,10,6,6" HorizontalAlignment="Left" />
+        <TextBox Grid.Column="1" Padding="2" Margin="3,10,3,3" Name="peselBox" VerticalContentAlignment="Center"/>
+        <TextBlock Text="Nazwisko:" Margin="6" HorizontalAlignment="Left" Grid.Row="1"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="1" Name="surnameBox" VerticalContentAlignment="Center"/>
+        <TextBlock Text="Imie:" Margin="6" HorizontalAlignment="Left" Grid.Row="2"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="2" Name="nameBox" VerticalContentAlignment="Center"/>
+        <TextBlock Text="Pensja:" Margin="6" HorizontalAlignment="Left" Grid.Row="3"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="3" Name="salaryBox" VerticalContentAlignment="Center"/>
+        <TextBlock Text="Stanowisko:" Margin="6" HorizontalAlignment="Left" Grid.Row="4"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="4" Name="jobBox" VerticalContentAlignment="Center"/>
+        <TextBlock Text="Adres zamieszkania:" Margin="6" HorizontalAlignment="Left" Grid.Row="5"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="5" Name="address1Box" VerticalContentAlignment="Center"/>
+        <TextBlock Text="Adres zatrudnienia:" Margin="6" HorizontalAlignment="Left" Grid.Row="6"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="6" Name="address2Box" VerticalContentAlignment="Center"/>
+        
+        <Grid Grid.Column="1" Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            
+            <Button Content="Dodaj"  Name="add" Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Click="addEmploye"/>
+        <Button Content="Anuluj"  Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Click="Anuluj"/>
+        </Grid>
+    </Grid>
+</Window>

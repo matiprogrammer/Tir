@@ -1,0 +1,106 @@
+﻿<Window x:Class="TIR.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TIR"
+        mc:Ignorable="d"
+        Title="TIR" Height="450" Width="920">
+    <Window.Resources>
+        <DataTemplate x:Key="CargoTemplate">
+            
+        </DataTemplate>
+    </Window.Resources>
+    <TabControl Name="TabControll">
+        <TabItem Width="180" Padding="5" Header="Lista Pracowników" Name="employes">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                
+                <TextBox Name="EmployeSearching" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
+                <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchEmploye" />
+                <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="2"  Click="ClearEmploye" />
+                <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="NewEmploye" />
+                <Button Content="Edytuj" Name="EmployeEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="EditEmploye" />
+                <Button Content="Usuń" Name="EmployeDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteEmploye" />
+                <ListView Name="employeList" HorizontalContentAlignment="Stretch" SelectionChanged="EmployeSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Width="auto" Header="Pesel" DisplayMemberBinding="{Binding nr_pesel}"/>
+                                <GridViewColumn Width="auto" Header="Nazwisko" DisplayMemberBinding="{Binding nazwisko}"/>
+                                <GridViewColumn Width="auto" Header="Imie" DisplayMemberBinding="{Binding imie}" />
+                                <GridViewColumn Width="auto" Header="Pensja" DisplayMemberBinding="{Binding pensja}"/>
+                                <GridViewColumn Width="auto" Header="Stanowisko" DisplayMemberBinding="{Binding stanowisko}"/>
+                                <GridViewColumn Width="auto" Header="Adres zamieszkania" DisplayMemberBinding="{Binding adres_zamieszkania}"/>
+                                <GridViewColumn Width="auto" Header="Adres zatrudnienia" DisplayMemberBinding="{Binding adres_zatrudnienia}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+        <TabItem Width="180" Padding="5" Header="Lista Ładunków" Name="cargos">
+
+        </TabItem>
+        <TabItem Width="180" Padding="5" Header="Lista  Klientów">
+
+        </TabItem>
+        <TabItem Width="180" Padding="5" Header="Lista Cięzarówek">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <TextBox Name="TirSearching" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
+                <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchTir" />
+                <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="2"  Click="ClearTir" />
+                <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="NewTir" />
+                <Button Content="Edytuj" Name="TirEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="EditTir" />
+                <Button Content="Usuń" Name="TirDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteTir" />
+                <ListView Name="tirList" HorizontalContentAlignment="Stretch" SelectionChanged="TirSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Width="auto" Header="Nr rejestracyjny" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
+                                <GridViewColumn Width="auto" Header="Rocznik" DisplayMemberBinding="{Binding rocznik}"/>
+                                <GridViewColumn Width="auto" Header="Max obciążenie" DisplayMemberBinding="{Binding maksymalne_dopuszczalne_obciazenie}" />
+                                <GridViewColumn Width="auto" Header="Kolor" DisplayMemberBinding="{Binding kolor}"/>
+                                <GridViewColumn Width="auto" Header="Model" DisplayMemberBinding="{Binding model}"/>
+                                <GridViewColumn Width="auto" Header="Producent" DisplayMemberBinding="{Binding producent}"/>
+                                <GridViewColumn Width="auto" Header="Pesel kierowcy" DisplayMemberBinding="{Binding nr_pesel_kierowcy}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+        <TabItem Width="180" Padding="5" Header="Firmy">
+
+        </TabItem>
+        
+    </TabControl>
+</Window>
