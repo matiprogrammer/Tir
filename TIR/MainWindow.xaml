@@ -46,6 +46,7 @@
                                 <GridViewColumn Width="auto" Header="Stanowisko" DisplayMemberBinding="{Binding stanowisko}"/>
                                 <GridViewColumn Width="auto" Header="Adres zamieszkania" DisplayMemberBinding="{Binding adres_zamieszkania}"/>
                                 <GridViewColumn Width="auto" Header="Adres zatrudnienia" DisplayMemberBinding="{Binding adres_zatrudnienia}"/>
+                                
                             </GridView.Columns>
                         </GridView>
                     </ListView.View>

@@ -23,5 +23,40 @@ namespace TIR
         {
             InitializeComponent();
         }
+
+        private void searchDriver(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void SearchCargo(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClearCargo(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NewCargo(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditCargo(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteCargo(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EmployeSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
