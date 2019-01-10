@@ -23,7 +23,7 @@ namespace TIR
     /// </summary>
     public partial class MainWindow : Window
     {     
-       public LinqToSQLDataContext dc = new LinqToSQLDataContext(Properties.Settings.Default.TransportCompanyConnectionString);
+
 
         public MainWindow()
         {
@@ -36,11 +36,8 @@ namespace TIR
 
         private void SearchEmploye(object sender, RoutedEventArgs e)
         {
-            var searchEmployes = from p in dc.Pracownicies
-                                 where p.nazwisko.Contains(EmployeSearching.Text) || p.imie.Contains(EmployeSearching.Text) || p.stanowisko.Contains(EmployeSearching.Text) ||p.nr_pesel== EmployeSearching.Text
-                                 select p;
-            if(searchEmployes!=null)
-            employeList.ItemsSource = searchEmployes;
+
+            employeList.ItemsSource = Queries.Instance.findEmploye(EmployeSearching.Text); ;
         }
 
         private void ClearEmploye(object sender, RoutedEventArgs e)
@@ -52,9 +49,8 @@ namespace TIR
 
         private void fillEmployesList()
         {
-            var employes = from p in dc.Pracownicies
-                           select p;
-            employeList.ItemsSource = employes;
+           
+            employeList.ItemsSource = Queries.Instance.getAllEmployes();
         }
 
         private void NewEmploye(object sender, RoutedEventArgs e)
@@ -67,14 +63,12 @@ namespace TIR
 
         private void DeleteEmploye(object sender, RoutedEventArgs e)
         {
-            dynamic selectedItem = employeList.SelectedItem;
-            string nr_pesel = selectedItem.nr_pesel;
-            var employe = from p in dc.Pracownicies
-                          where p.nr_pesel == nr_pesel
-                          select p;
-
-            dc.Pracownicies.DeleteOnSubmit((Pracownicy)employeList.SelectedItem);
-            dc.SubmitChanges();
+            Pracownicy selectedItem =(Pracownicy)employeList.SelectedItem;
+            // string nr_pesel = selectedItem.nr_pesel;
+            //var employe = Queries.Instance.findEmployeByPesel(nr_pesel);
+            Ciezarowki tir= Queries.Instance.findTirByPesel(selectedItem.nr_pesel);
+            tir.nr_pesel_kierowcy = null;
+            Queries.Instance.deleteEmploye(selectedItem);
             fillEmployesList();
         }
 
@@ -106,9 +100,7 @@ namespace TIR
 
         private void fillTirList()
         {
-            var tirs = from p in dc.Ciezarowkis
-                           select p;
-            tirList.ItemsSource = tirs;
+            tirList.ItemsSource = Queries.Instance.getAllTirs(); 
         }
 
         private void NewTir(object sender, RoutedEventArgs e)
@@ -121,15 +113,8 @@ namespace TIR
 
         private void SearchTir(object sender, RoutedEventArgs e)
         {
-            int rocznik;
-            
-            var result2 = Int32.TryParse(TirSearching.Text, out rocznik);
 
-            if (!result2)
-                rocznik = 0;
-            var searchTirs = from p in dc.Ciezarowkis
-                                 where p.model.Contains(TirSearching.Text) || p.producent.Contains(TirSearching.Text) || p.nr_pesel_kierowcy.Contains(TirSearching.Text) || p.nr_rejestracyjny_ciezarowki== TirSearching.Text || p.rocznik==rocznik
-                                 select p;
+            var searchTirs = Queries.Instance.findTir(TirSearching.Text);
             if (searchTirs != null)
                 tirList.ItemsSource = searchTirs;
         }
@@ -149,14 +134,8 @@ namespace TIR
 
         private void DeleteTir(object sender, RoutedEventArgs e)
         {
-            dynamic selectedItem = tirList.SelectedItem;
-            string nr_rejestracyjny = selectedItem.nr_rejestracyjny_ciezarowki;
-            var employe = from p in dc.Ciezarowkis
-                          where p.nr_rejestracyjny_ciezarowki == nr_rejestracyjny
-                          select p;
-
-            dc.Ciezarowkis.DeleteOnSubmit((Ciezarowki)tirList.SelectedItem);
-            dc.SubmitChanges();
+           Ciezarowki selectedItem = (Ciezarowki)tirList.SelectedItem;
+            Queries.Instance.deleteTir(selectedItem);
             fillTirList();
         }
 
@@ -176,7 +155,11 @@ namespace TIR
 
         private void tirChoosen(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("asdasdasd");
+            TirDetails tirDetailsWindow = new TirDetails();
+            tirDetailsWindow.Show();
         }
+
+       
+        
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +21,7 @@ namespace TIR
     public partial class NewEditEmploye : Window
     {
         public bool isEdit;
+        private Pracownicy selectedEmploye;
         public NewEditEmploye(bool isEdit, Window mainWindow)
         {
             InitializeComponent();
@@ -27,14 +29,14 @@ namespace TIR
 
             if (isEdit)
             {
-                dynamic selectedItem = ((MainWindow)Application.Current.MainWindow).employeList.SelectedItem;
-                peselBox.Text = selectedItem.nr_pesel;
-                surnameBox.Text = selectedItem.nazwisko;
-                nameBox.Text = selectedItem.imie;
-                salaryBox.Text = selectedItem.pensja.ToString();
-                jobBox.Text = selectedItem.stanowisko;
-                address1Box.Text = selectedItem.adres_zamieszkania;
-                address2Box.Text = selectedItem.adres_zatrudnienia;
+                this.selectedEmploye =(Pracownicy)((MainWindow)Application.Current.MainWindow).employeList.SelectedItem;
+                peselBox.Text = selectedEmploye.nr_pesel;
+                surnameBox.Text = selectedEmploye.nazwisko;
+                nameBox.Text = selectedEmploye.imie;
+                salaryBox.Text = selectedEmploye.pensja.ToString();
+                jobBox.Text = selectedEmploye.stanowisko;
+                address1Box.Text = selectedEmploye.adres_zamieszkania;
+                address2Box.Text = selectedEmploye.adres_zatrudnienia;
                 add.Content = "Zapisz";
             }
         }
@@ -52,14 +54,11 @@ namespace TIR
                 employe.adres_zamieszkania = address1Box.Text;
                 employe.adres_zatrudnienia = address2Box.Text;
 
-                ((MainWindow)Application.Current.MainWindow).dc.Pracownicies.InsertOnSubmit(employe);
-                
+                Queries.Instance.addEmploye(employe);
             }
             else
             {
-                var update = from p in ((MainWindow)Application.Current.MainWindow).dc.Pracownicies
-                             where p.nr_pesel==peselBox.Text
-                             select p;
+                var update = Queries.Instance.findEmployeByPesel(peselBox.Text);
 
                 foreach(var employe in update)
                 {
@@ -73,7 +72,7 @@ namespace TIR
                 }
 
             }
-            ((MainWindow)Application.Current.MainWindow).dc.SubmitChanges();
+            Queries.Instance.submitChanges();
 
             this.Close();
         }
@@ -81,6 +80,12 @@ namespace TIR
         private void Anuluj(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

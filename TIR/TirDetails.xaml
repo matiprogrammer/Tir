@@ -35,7 +35,7 @@
         <TextBlock Text="Maksymalne obciążenie:" Margin="5" Grid.Row="2" Grid.Column="2" />
         <TextBlock Name="loadTextBox" Margin="5" Grid.Column="3" Grid.Row="2"/>
         <TextBlock Text="Kierowca:" Margin="5" Grid.Row="3" Grid.Column="0" />
-        <TextBlock Name="kierowcaTextBox" Margin="5" Grid.Column="1" Grid.Row="3" MouseLeftButtonDown="searchDriver"/>
+        <TextBlock Name="kierowcaTextBox" Margin="5" Grid.Column="1" Grid.Row="3" MouseLeftButtonDown="currentDriverClick"/>
         
         <TabControl Grid.Row="4" Grid.ColumnSpan="4">
             
@@ -62,7 +62,7 @@
                     <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="NewCargo" />
                     <Button Content="Edytuj" Name="CargoEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="EditCargo" />
                     <Button Content="Usuń" Name="CargoDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteCargo" />
-                    <ListView Name="employeList" HorizontalContentAlignment="Stretch" SelectionChanged="EmployeSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                    <ListView Name="cargoList" HorizontalContentAlignment="Stretch" SelectionChanged="TirSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>

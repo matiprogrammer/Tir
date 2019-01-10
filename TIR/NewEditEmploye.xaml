@@ -24,13 +24,13 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Pesel:" Margin="6,10,6,6" HorizontalAlignment="Left" />
-        <TextBox Grid.Column="1" Padding="2" Margin="3,10,3,3" Name="peselBox" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Column="1" Padding="2" Margin="3,10,3,3" Name="peselBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
         <TextBlock Text="Nazwisko:" Margin="6" HorizontalAlignment="Left" Grid.Row="1"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="1" Name="surnameBox" VerticalContentAlignment="Center"/>
         <TextBlock Text="Imie:" Margin="6" HorizontalAlignment="Left" Grid.Row="2"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="2" Name="nameBox" VerticalContentAlignment="Center"/>
         <TextBlock Text="Pensja:" Margin="6" HorizontalAlignment="Left" Grid.Row="3"/>
-        <TextBox Grid.Column="1" Margin="3" Grid.Row="3" Name="salaryBox" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="3" Name="salaryBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
         <TextBlock Text="Stanowisko:" Margin="6" HorizontalAlignment="Left" Grid.Row="4"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="4" Name="jobBox" VerticalContentAlignment="Center"/>
         <TextBlock Text="Adres zamieszkania:" Margin="6" HorizontalAlignment="Left" Grid.Row="5"/>

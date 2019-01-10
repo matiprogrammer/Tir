@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Queries.cs" />
     <Compile Include="TirDetails.xaml.cs">
       <DependentUpon>TirDetails.xaml</DependentUpon>
     </Compile>
