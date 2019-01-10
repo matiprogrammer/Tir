@@ -66,7 +66,7 @@ namespace TIR
 
         }
 
-        private void TirSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CargoSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

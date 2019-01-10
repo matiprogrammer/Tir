@@ -141,5 +141,12 @@ namespace TIR
                         select p;
             return cargo;
         }
+
+
+        public void deleteCargo(Ladunki cargo)
+        {
+            dc.Ladunkis.DeleteOnSubmit((Ladunki)cargo);
+            dc.SubmitChanges();
+        }
     }
 }

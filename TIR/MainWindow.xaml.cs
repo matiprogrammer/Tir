@@ -159,7 +159,51 @@ namespace TIR
             tirDetailsWindow.Show();
         }
 
-       
-        
+        //----------------------------------------------------------------------------------------------------------------LADUNKI-------------------------------------
+        private void fillCargoList()
+        {
+            cargoList.ItemsSource = Queries.Instance.getAllCargos();
+        }
+        private void SearchCargo(object sender, RoutedEventArgs e)
+        {
+            cargoList.ItemsSource = Queries.Instance.findCargo(CargoSearching.Text);
+        }
+
+        private void ClearCargo(object sender, RoutedEventArgs e)
+        {
+            cargoList.ItemsSource = Queries.Instance.getAllCargos();
+            CargoSearching.Text = "";
+        }
+
+        private void NewCargo(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditCargo(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteCargo(object sender, RoutedEventArgs e)
+        {
+            Ladunki selectedCargo = (Ladunki)cargoList.SelectedItem;
+            Queries.Instance.deleteCargo(selectedCargo);
+            fillCargoList();
+        }
+
+        private void CargoSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cargoList.SelectedIndex > -1)
+            {
+                CargoDeleteButton.IsEnabled = true;
+                CargoEditButton.IsEnabled = true;
+            }
+            else
+            {
+                CargoDeleteButton.IsEnabled = false;
+                CargoEditButton.IsEnabled = false;
+            }
+        }
     }
 }
