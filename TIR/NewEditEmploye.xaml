@@ -37,7 +37,7 @@
         <TextBox Grid.Column="1" Margin="3" Grid.Row="5" Name="address1Box" VerticalContentAlignment="Center"/>
         <TextBlock Text="Adres zatrudnienia:" Margin="6" HorizontalAlignment="Left" Grid.Row="6"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="6" Name="address2Box" VerticalContentAlignment="Center"/>
-        
+        <DatePicker Height="36" VerticalAlignment="Bottom"></DatePicker>
         <Grid Grid.Column="1" Grid.Row="7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
