@@ -156,5 +156,26 @@ namespace TIR
             dc.Ladunkis.DeleteOnSubmit((Ladunki)cargo);
             dc.SubmitChanges();
         }
+
+        #region Klienci
+
+        public IQueryable<Klienci> getAllCustomers()
+        {
+            var customers = from p in dc.Kliencis
+                            select p;
+            return customers;
+        }
+
+        public IQueryable<Klienci> findCustomer(string inputValue)
+        {
+            int inputNumber = 0;
+            bool result = Int32.TryParse(inputValue, out inputNumber);
+
+            var searchCustomers = from p in dc.Kliencis
+                                 where p.nazwisko.Contains(inputValue) || p.imie.Contains(inputValue) || p.nr_telefonu.Contains(inputValue) || p.id_klienta == inputNumber
+                                  select p;
+            return searchCustomers;
+        }
+        #endregion
     }
 }

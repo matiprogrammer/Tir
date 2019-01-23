@@ -31,7 +31,7 @@ namespace TIR
             InitializeComponent();
             fillEmployesList();
             fillTirList();
-
+            fillCustomerList();
         }
 
         private void SearchEmploye(object sender, RoutedEventArgs e)
@@ -210,5 +210,53 @@ namespace TIR
                 CargoEditButton.IsEnabled = false;
             }
         }
+        #region Klienci
+
+        private void fillCustomerList()
+        {
+            CustomerList.ItemsSource = Queries.Instance.getAllCustomers();
+        }
+
+        private void SearchCustomer(object sender, RoutedEventArgs e)
+        {
+            CustomerList.ItemsSource = Queries.Instance.findCustomer(CustomerSearching.Text);
+        }
+
+        private void ClearCustomer(object sender, RoutedEventArgs e)
+        {
+            CustomerList.ItemsSource = Queries.Instance.getAllCustomers();
+            CustomerSearching.Text = "";
+        }
+
+        private void NewCustomer(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditCustomer(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteCustomer(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CustomerSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CustomerList.SelectedIndex > -1)
+            {
+                CustomerDeleteButton.IsEnabled = true;
+                CustomerEditButton.IsEnabled = true;
+            }
+            else
+            {
+                CustomerDeleteButton.IsEnabled = false;
+                CustomerEditButton.IsEnabled = false;
+            }
+        }
+
+        #endregion
     }
 }

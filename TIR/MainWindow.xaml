@@ -100,8 +100,40 @@
                 </ListView>
             </Grid>
         </TabItem>
-        <TabItem Width="180" Padding="5" Header="Lista  Klientów">
-
+        <TabItem Width="180" Padding="5" Header="Lista Klientów">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Name="CustomerSearching" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
+                <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchCustomer" />
+                <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="2"  Click="ClearCustomer" />
+                <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="NewCustomer" />
+                <Button Content="Edytuj" Name="CustomerEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="EditCustomer" />
+                <Button Content="Usuń" Name="CustomerDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteCustomer" />
+                <ListView Name="CustomerList" HorizontalContentAlignment="Stretch" SelectionChanged="CustomerSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Width="auto" Header="ID Klienta" DisplayMemberBinding="{Binding id_klienta}"/>
+                                <GridViewColumn Width="auto" Header="Imię" DisplayMemberBinding="{Binding imie}"/>
+                                <GridViewColumn Width="auto" Header="Nazwisko" DisplayMemberBinding="{Binding nazwisko}"/>
+                                <GridViewColumn Width="auto" Header="Adres zamieszkania" DisplayMemberBinding="{Binding adres_zamieszkania}"/>
+                                <GridViewColumn Width="auto" Header="Numer telefonu" DisplayMemberBinding="{Binding nr_telefonu}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
         </TabItem>
         <TabItem Width="180" Padding="5" Header="Lista Cięzarówek">
             <Grid>
