@@ -230,17 +230,23 @@ namespace TIR
 
         private void NewCustomer(object sender, RoutedEventArgs e)
         {
-
+            NewEditCustomer newEditCustomerWindow = new NewEditCustomer(false);
+            newEditCustomerWindow.ShowDialog();
+            fillCustomerList();
         }
 
         private void EditCustomer(object sender, RoutedEventArgs e)
         {
-
+            NewEditCustomer newEditCustomerWindow = new NewEditCustomer(true);
+            newEditCustomerWindow.ShowDialog();
+            fillCustomerList();
         }
 
         private void DeleteCustomer(object sender, RoutedEventArgs e)
         {
-
+            Klienci selectedCustomer = (Klienci)CustomerList.SelectedItem;
+            Queries.Instance.deleteCustomer(selectedCustomer);
+            fillCargoList();
         }
 
         private void CustomerSelectionChanged(object sender, SelectionChangedEventArgs e)
