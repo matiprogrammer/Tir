@@ -222,21 +222,24 @@ namespace TIR
                 CargoEditButton.IsEnabled = false;
             }
         }
+
+
+
         #region Klienci
 
         private void fillCustomerList()
         {
-            CustomerList.ItemsSource = Queries.Instance.getAllCustomers();
+            CustomerList.ItemsSource = new Queries().getAllCustomers();
         }
 
         private void SearchCustomer(object sender, RoutedEventArgs e)
         {
-            CustomerList.ItemsSource = Queries.Instance.findCustomer(CustomerSearching.Text);
+            CustomerList.ItemsSource = new Queries().findCustomer(CustomerSearching.Text);
         }
 
         private void ClearCustomer(object sender, RoutedEventArgs e)
         {
-            CustomerList.ItemsSource = Queries.Instance.getAllCustomers();
+            CustomerList.ItemsSource = new Queries().getAllCustomers();
             CustomerSearching.Text = "";
         }
 
@@ -257,7 +260,7 @@ namespace TIR
         private void DeleteCustomer(object sender, RoutedEventArgs e)
         {
             Klienci selectedCustomer = (Klienci)CustomerList.SelectedItem;
-            Queries.Instance.deleteCustomer(selectedCustomer);
+            new Queries().deleteCustomer(selectedCustomer);
             fillCustomerList();
         }
 

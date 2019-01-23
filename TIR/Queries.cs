@@ -203,7 +203,10 @@ namespace TIR
 
         public void deleteCustomer(Klienci customerToDelete)
         {
-            dc.Kliencis.DeleteOnSubmit(customerToDelete);
+            var customers = (from k in dc.Kliencis
+                             where k.id_klienta == customerToDelete.id_klienta
+                             select k).First();
+            dc.Kliencis.DeleteOnSubmit(customers);
             dc.SubmitChanges();
         }
         #endregion

@@ -31,7 +31,7 @@ namespace TIR
             if (isEdit)
             {
                 this.selectedCustomer = (Klienci)((MainWindow)Application.Current.MainWindow).CustomerList.SelectedItem;
-                CustomerIDBox.Text = selectedCustomer.id_klienta.ToString();
+
                 CustomerFirstNameBox.Text = selectedCustomer.imie;
                 CustomerLastNameBox.Text = selectedCustomer.nazwisko;
                 CustomerAddressBox.Text = selectedCustomer.adres_zamieszkania;
@@ -42,31 +42,30 @@ namespace TIR
 
         private void AddCustomer(object sender, RoutedEventArgs e)
         {
+            Queries query = new Queries();
             if (!isEdit)
             {
                 Klienci newCustomer = new Klienci();
-                newCustomer.id_klienta = int.Parse(CustomerIDBox.Text);
                 newCustomer.imie = CustomerFirstNameBox.Text;
                 newCustomer.nazwisko = CustomerLastNameBox.Text;
                 newCustomer.adres_zamieszkania = CustomerAddressBox.Text;
                 newCustomer.nr_telefonu = CustomerPhoneNumberBox.Text;
 
-                Queries.Instance.addCustomer(newCustomer);
+                query.addCustomer(newCustomer);
             }
             else
             {
-                var modifiedCustomer = Queries.Instance.findCustomerByID(int.Parse(CustomerIDBox.Text));
+                var modifiedCustomer = query.findCustomerByID(selectedCustomer.id_klienta);
 
                 foreach (var customer in modifiedCustomer)
                 {
-                    customer.id_klienta = int.Parse(CustomerIDBox.Text);
                     customer.imie = CustomerFirstNameBox.Text;
                     customer.nazwisko = CustomerLastNameBox.Text;
                     customer.adres_zamieszkania = CustomerAddressBox.Text;
                     customer.nr_telefonu = CustomerPhoneNumberBox.Text;
                 }
             }
-            Queries.Instance.submitChanges();
+            query.submitChanges();
 
             this.Close();
         }

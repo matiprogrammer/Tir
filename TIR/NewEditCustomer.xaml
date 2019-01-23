@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
-        Title="NewEditCustomer" Height="450" Width="400">
+        Title="NewEditCustomer" Height="auto" Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -20,8 +20,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="ID klienta:" Margin="6,10,6,6" HorizontalAlignment="Left" />
-        <TextBox Grid.Column="1" Padding="2" Margin="3,10,3,3" Name="CustomerIDBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
+
         <TextBlock Text="Imię:" Margin="6" HorizontalAlignment="Left" Grid.Row="1"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="1" Name="CustomerFirstNameBox" VerticalContentAlignment="Center"/>
         <TextBlock Text="Nazwisko:" Margin="6" HorizontalAlignment="Left" Grid.Row="2"/>
