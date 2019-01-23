@@ -9,21 +9,86 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="2*"/>
+
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TabControl>
-        <TabItem Width="200" Padding="5" Header="Lista ładunków">
+        <TextBlock Text="Nr rejestracyjny:" Margin="5" />
+        <TextBlock Name="nr_rejestracyjnyTextBox" Margin="5" FontWeight="Bold" Grid.Column="1" />
+        <TextBlock Text="Rocznik:" Margin="5" Grid.Row="1" />
+        <TextBlock Name="rocznikTextBox" Margin="5" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Text="Model:" Margin="5" Grid.Column="2" />
+        <TextBlock Name="modelTextBox" Margin="5" Grid.Column="4" Grid.Row="0"/>
+        <TextBlock Text="Producent:" Margin="5" Grid.Row="1" Grid.Column="2" />
+        <TextBlock Name="producentTextBox" Margin="5" Grid.Column="4" Grid.Row="1"/>
+        <TextBlock Text="Kolor:" Margin="5" Grid.Row="2" Grid.Column="0" />
+        <TextBlock Name="kolorTextBox" Margin="5" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock Text="Maksymalne obciążenie:" Margin="5" Grid.Row="2" Grid.Column="2" />
+        <TextBlock Name="loadTextBox" Margin="5" Grid.Column="3" Grid.Row="2"/>
+        <TextBlock Text="Kierowca:" Margin="5" Grid.Row="3" Grid.Column="0" />
+        <TextBlock Name="kierowcaTextBox" Margin="5" Grid.Column="1" Grid.Row="3" MouseLeftButtonDown="currentDriverClick"/>
+        
+        <TabControl Grid.Row="4" Grid.ColumnSpan="4">
             
-        </TabItem>
-    </TabControl>
+        <TabItem Width="200" Padding="5" Header="Lista ładunków">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <TextBox Name="CargoSearching" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
+                    <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchCargo" />
+                    <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="2"  Click="ClearCargo" />
+                    <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="NewCargo" />
+                    <Button Content="Edytuj" Name="CargoEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="EditCargo" />
+                    <Button Content="Usuń" Name="CargoDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteCargo" />
+                    <ListView Name="cargoList" HorizontalContentAlignment="Stretch" SelectionChanged="CargoSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Width="auto" Header="ID ładunku" DisplayMemberBinding="{Binding id_ladunku}"/>
+                                    <GridViewColumn Width="auto" Header="Nazwa" DisplayMemberBinding="{Binding nazwa_ladunku}"/>
+                                    <GridViewColumn Width="auto" Header="Rodzaj" DisplayMemberBinding="{Binding rodzaj_ladunku}" />
+                                    <GridViewColumn Width="auto" Header="Waga" DisplayMemberBinding="{Binding waga}"/>
+                                    <GridViewColumn Width="auto" Header="Adres startowy" DisplayMemberBinding="{Binding adres_startowy}"/>
+                                    <GridViewColumn Width="auto" Header="Adres docelowy" DisplayMemberBinding="{Binding adres_docelowy}"/>
+                                    <GridViewColumn Width="auto" Header="Data nadania" DisplayMemberBinding="{Binding data_nadania}"/>
+                                    <GridViewColumn Width="auto" Header="Data odbioru" DisplayMemberBinding="{Binding data_odbioru}"/>
+                                    <GridViewColumn Width="auto" Header="Ciężarówka" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
+                                    <GridViewColumn Width="auto" Header="Nadawca" DisplayMemberBinding="{Binding id_nadawcy}"/>
+                                    <GridViewColumn Width="auto" Header="Odbiorca" DisplayMemberBinding="{Binding id_odbiorcy}"/>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Width="200" Padding="5" Header="Przeglądy">
+
+            </TabItem>
+            <TabItem Width="200" Padding="5" Header="Naprawy">
+
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

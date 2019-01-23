@@ -46,6 +46,7 @@
                                 <GridViewColumn Width="auto" Header="Stanowisko" DisplayMemberBinding="{Binding stanowisko}"/>
                                 <GridViewColumn Width="auto" Header="Adres zamieszkania" DisplayMemberBinding="{Binding adres_zamieszkania}"/>
                                 <GridViewColumn Width="auto" Header="Adres zatrudnienia" DisplayMemberBinding="{Binding adres_zatrudnienia}"/>
+                                
                             </GridView.Columns>
                         </GridView>
                     </ListView.View>
@@ -53,7 +54,51 @@
             </Grid>
         </TabItem>
         <TabItem Width="180" Padding="5" Header="Lista Ładunków" Name="cargos">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
 
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <TextBox Name="CargoSearching" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
+                <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchCargo" />
+                <Slider Margin="6" Name="slider"  Padding="3" Grid.Row="0" Grid.Column="2" />
+                <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="ClearCargo" HorizontalAlignment="Right"/>
+                <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="NewCargo" />
+                <Button Content="Edytuj" Name="CargoEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="EditCargo" />
+                <Button Content="Usuń" Name="CargoDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="6"  Click="DeleteCargo" />
+                <ListView Name="cargoList" HorizontalContentAlignment="Stretch" SelectionChanged="CargoSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Width="auto" Header="ID ładunku" DisplayMemberBinding="{Binding id_ladunku}"/>
+                                <GridViewColumn Width="auto" Header="Nazwa" DisplayMemberBinding="{Binding nazwa_ladunku}"/>
+                                <GridViewColumn Width="auto" Header="Rodzaj" DisplayMemberBinding="{Binding rodzaj_ladunku}" />
+                                <GridViewColumn Width="auto" Header="Waga" DisplayMemberBinding="{Binding waga}"/>
+                                <GridViewColumn Width="auto" Header="Adres startowy" DisplayMemberBinding="{Binding adres_startowy}"/>
+                                <GridViewColumn Width="auto" Header="Adres docelowy" DisplayMemberBinding="{Binding adres_docelowy}"/>
+                                <GridViewColumn Width="auto" Header="Data nadania" DisplayMemberBinding="{Binding data_nadania}"/>
+                                <GridViewColumn Width="auto" Header="Data odbioru" DisplayMemberBinding="{Binding data_odbioru}"/>
+                                <GridViewColumn Width="auto" Header="Ciężarówka" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
+                                <GridViewColumn Width="auto" Header="Nadawca" DisplayMemberBinding="{Binding id_nadawcy}"/>
+                                <GridViewColumn Width="auto" Header="Odbiorca" DisplayMemberBinding="{Binding id_odbiorcy}"/>
+
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
         </TabItem>
         <TabItem Width="180" Padding="5" Header="Lista  Klientów">
 

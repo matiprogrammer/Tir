@@ -28,31 +28,25 @@ namespace TIR
         {
             this.isEdit = isEdit;
             InitializeComponent();
-            var searchDrivers = from p in ((MainWindow)Application.Current.MainWindow).dc.Pracownicies
-                                where p.stanowisko.ToLower() == "kierowca"
-                                 select p;
-            if (searchDrivers != null)
-                driverBox.ItemsSource = searchDrivers;
-
-           
+                driverBox.ItemsSource = Queries.Instance.findEmployeByJob("kierowca");
+  
 
             if (isEdit)
             {
                 
-                dynamic selectedItem = ((MainWindow)Application.Current.MainWindow).tirList.SelectedItem;
-                string peseltmp = selectedItem.nr_pesel_kierowcy;
-                var currentDriver = from p in ((MainWindow)Application.Current.MainWindow).dc.Pracownicies
-                                    where p.nr_pesel ==peseltmp
-                                    select p;
+                Ciezarowki selectedTir =(Ciezarowki)((MainWindow)Application.Current.MainWindow).tirList.SelectedItem;
+                string peseltmp = selectedTir.nr_pesel_kierowcy;
+              
 
-                yearBox.Text = Convert.ToString(selectedItem.rocznik); 
-                loadBox.Text = Convert.ToString(selectedItem.maksymalne_dopuszczalne_obciazenie);
-                modelBox.Text = selectedItem.model;
-                producentBox.Text = selectedItem.producent;
-                colorBox.Text = selectedItem.kolor;
-                nrBox.Text = Convert.ToString(selectedItem.nr_rejestracyjny_ciezarowki);
-                foreach(var driver in currentDriver)
-                driverBox.SelectedItem = driver;
+                yearBox.Text = Convert.ToString(selectedTir.rocznik); 
+                loadBox.Text = Convert.ToString(selectedTir.maksymalne_dopuszczalne_obciazenie);
+                modelBox.Text = selectedTir.model;
+                producentBox.Text = selectedTir.producent;
+                colorBox.Text = selectedTir.kolor;
+                nrBox.Text = Convert.ToString(selectedTir.nr_rejestracyjny_ciezarowki);
+                var currentDriver= Queries.Instance.findEmployeByPesel(selectedTir.nr_pesel_kierowcy);
+                foreach (var driver in currentDriver)
+                    driverBox.SelectedItem = driver;
                 add.Content = "Zapisz";
             }
         }
@@ -70,13 +64,12 @@ namespace TIR
                 tir.producent = producentBox.Text;
                 tir.kolor = colorBox.Text;
                 tir.nr_pesel_kierowcy = driverBox.SelectedValue.ToString();
-                ((MainWindow)Application.Current.MainWindow).dc.Ciezarowkis.InsertOnSubmit(tir);
+                Queries.Instance.addTir(tir);
+               
             }
             else
             {
-                var update = from p in ((MainWindow)Application.Current.MainWindow).dc.Ciezarowkis
-                             where p.nr_rejestracyjny_ciezarowki == nrBox.Text
-                             select p;
+                var update = Queries.Instance.findTirByNr(nrBox.Text);
 
                 foreach (var tir in update)
                 {
@@ -90,7 +83,7 @@ namespace TIR
                 }
 
             }
-            ((MainWindow)Application.Current.MainWindow).dc.SubmitChanges();
+            Queries.Instance.submitChanges();
 
             this.Close();
         }
