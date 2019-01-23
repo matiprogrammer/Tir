@@ -9,21 +9,21 @@ namespace TIR
     class Queries
     {
 
-        private static Queries baseInstance = null;
-        public LinqToSQLDataContext dc = new LinqToSQLDataContext(Properties.Settings.Default.TransportCompanyConnectionString);
-        public static Queries Instance
-        {
-            get
-            {
-                if(baseInstance==null)
-                {
-                    baseInstance = new Queries();
-                }
-                return baseInstance;
-            }
-        }
+        // private static Queries baseInstance = null;
+        private LinqToSQLDataContext dc;
+        //public static Queries Instance
+        //{
+        //    get
+        //    {
+        //        if(baseInstance==null)
+        //        {
+        //            baseInstance = new Queries();
+        //        }
+        //        return baseInstance;
+        //    }
+        //}
 
-        public Queries() { }
+        public Queries() { dc = new LinqToSQLDataContext(Properties.Settings.Default.TransportCompanyConnectionString); }
 
         public IQueryable<Pracownicy> findEmployeByPesel(string nr_pesel)
         {
@@ -51,7 +51,11 @@ namespace TIR
 
         public void deleteEmploye(Pracownicy employe)
         {
-            dc.Pracownicies.DeleteOnSubmit(employe);
+            var employes = (from p in dc.Pracownicies
+                            where p.nr_pesel==employe.nr_pesel
+                            select p).First();
+
+            dc.Pracownicies.DeleteOnSubmit(employes);
             dc.SubmitChanges();
         }
         public IQueryable<Pracownicy> getAllEmployes()
@@ -64,6 +68,7 @@ namespace TIR
         public void addEmploye(Pracownicy employe)
         {
             dc.Pracownicies.InsertOnSubmit(employe);
+            dc.SubmitChanges();
         }
 
         public IQueryable<Ciezarowki> findTir(string inputValue)
@@ -90,7 +95,10 @@ namespace TIR
 
         public void deleteTir(Ciezarowki tir)
         {
-            dc.Ciezarowkis.DeleteOnSubmit((Ciezarowki)tir);
+            var tirs = (from c in dc.Ciezarowkis
+                            where c.nr_rejestracyjny_ciezarowki == tir.nr_rejestracyjny_ciezarowki
+                            select c).First();
+            dc.Ciezarowkis.DeleteOnSubmit(tirs);
             dc.SubmitChanges();
         }
         
@@ -107,6 +115,7 @@ namespace TIR
         public void addTir(Ciezarowki tir)
         {
             dc.Ciezarowkis.InsertOnSubmit(tir);
+            dc.SubmitChanges();
         }
 
         public void submitChanges()
@@ -116,17 +125,17 @@ namespace TIR
 
         public Ciezarowki findTirByPesel(string pesel)
         {
-            var tirExists = (from p in dc.Ciezarowkis
-                             where p.nr_pesel_kierowcy == pesel
-                             select p).Any();
-            if (tirExists)
-            {
+            //var tirExists = (from p in dc.Ciezarowkis
+            //                 where p.nr_pesel_kierowcy == pesel
+            //                 select p).Any();
+            //if (tirExists)
+            //{
                 var search = (from p in dc.Ciezarowkis
                               where p.nr_pesel_kierowcy == pesel
                               select p).First();
                 return search;
-            }
-            return null;
+            //}
+            //return null;
             
         }
 
@@ -153,7 +162,10 @@ namespace TIR
 
         public void deleteCargo(Ladunki cargo)
         {
-            dc.Ladunkis.DeleteOnSubmit((Ladunki)cargo);
+            var cargos = (from c in dc.Ladunkis
+                          where c.id_ladunku == cargo.id_ladunku
+                          select c).First();
+            dc.Ladunkis.DeleteOnSubmit(cargos);
             dc.SubmitChanges();
         }
     }

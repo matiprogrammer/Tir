@@ -37,7 +37,7 @@ namespace TIR
         private void SearchEmploye(object sender, RoutedEventArgs e)
         {
 
-            employeList.ItemsSource = Queries.Instance.findEmploye(EmployeSearching.Text); ;
+            employeList.ItemsSource = new Queries().findEmploye(EmployeSearching.Text); ;
         }
 
         private void ClearEmploye(object sender, RoutedEventArgs e)
@@ -49,8 +49,11 @@ namespace TIR
 
         private void fillEmployesList()
         {
-           
-            employeList.ItemsSource = Queries.Instance.getAllEmployes();
+            var x = new Queries().getAllEmployes();
+            employeList.ItemsSource = x;
+            foreach (var xx in x)
+                Console.WriteLine("pracownicy"+xx.nr_pesel);
+
         }
 
         private void NewEmploye(object sender, RoutedEventArgs e)
@@ -66,21 +69,25 @@ namespace TIR
             Pracownicy selectedItem =(Pracownicy)employeList.SelectedItem;
             // string nr_pesel = selectedItem.nr_pesel;
             //var employe = Queries.Instance.findEmployeByPesel(nr_pesel);
-            if (selectedItem.stanowisko.ToLower() == "kierowca")
-            {
-                Ciezarowki tir = Queries.Instance.findTirByPesel(selectedItem.nr_pesel);
-                if(tir!=null)
-                tir.nr_pesel_kierowcy = null;
-            }
-            Queries.Instance.deleteEmploye(selectedItem);
+            //if (selectedItem.stanowisko.ToLower() == "kierowca")
+            //{
+            //    Ciezarowki tir = Queries.Instance.findTirByPesel(selectedItem.nr_pesel);
+            //    if(tir!=null)
+            //    tir.nr_pesel_kierowcy = null;
+            //}
+            new Queries().deleteEmploye(selectedItem);
             fillEmployesList();
+            employeList.Items.Refresh();
+            tirList.Items.Refresh();
+                        fillTirList();
+            
         }
 
         private void EditEmploye(object sender, RoutedEventArgs e)
         {
             NewEditEmploye employeWindow = new NewEditEmploye(true, this);
             employeWindow.ShowDialog();
-            //fillEmployesList();
+            fillEmployesList();
             employeList.Items.Refresh();
             
         }
@@ -103,8 +110,12 @@ namespace TIR
         //------------------------------------------------------------------------------------------------------------ Ciezarowki------------------------------------------------
 
         private void fillTirList()
-        {
-            tirList.ItemsSource = Queries.Instance.getAllTirs(); 
+        {   
+            //var x= Queries.Instance.getAllTirs();
+            var x= new Queries().getAllTirs();
+            tirList.ItemsSource = x;
+            foreach(var xx in x)
+            Console.WriteLine(xx.nr_pesel_kierowcy);
         }
 
         private void NewTir(object sender, RoutedEventArgs e)
@@ -118,7 +129,7 @@ namespace TIR
         private void SearchTir(object sender, RoutedEventArgs e)
         {
 
-            var searchTirs = Queries.Instance.findTir(TirSearching.Text);
+            var searchTirs = new Queries().findTir(TirSearching.Text);
             if (searchTirs != null)
                 tirList.ItemsSource = searchTirs;
         }
@@ -133,13 +144,14 @@ namespace TIR
         {
             NewEditTir tirWindow = new NewEditTir(true);
             tirWindow.ShowDialog();
+            fillTirList();
             
         }
 
         private void DeleteTir(object sender, RoutedEventArgs e)
         {
            Ciezarowki selectedItem = (Ciezarowki)tirList.SelectedItem;
-            Queries.Instance.deleteTir(selectedItem);
+            new Queries().deleteTir(selectedItem);
             fillTirList();
         }
 
@@ -166,16 +178,16 @@ namespace TIR
         //----------------------------------------------------------------------------------------------------------------LADUNKI-------------------------------------
         private void fillCargoList()
         {
-            cargoList.ItemsSource = Queries.Instance.getAllCargos();
+            cargoList.ItemsSource = new Queries().getAllCargos();
         }
         private void SearchCargo(object sender, RoutedEventArgs e)
         {
-            cargoList.ItemsSource = Queries.Instance.findCargo(CargoSearching.Text);
+            cargoList.ItemsSource = new Queries().findCargo(CargoSearching.Text);
         }
 
         private void ClearCargo(object sender, RoutedEventArgs e)
         {
-            cargoList.ItemsSource = Queries.Instance.getAllCargos();
+            cargoList.ItemsSource = new Queries().getAllCargos();
             CargoSearching.Text = "";
         }
 
@@ -193,7 +205,7 @@ namespace TIR
         private void DeleteCargo(object sender, RoutedEventArgs e)
         {
             Ladunki selectedCargo = (Ladunki)cargoList.SelectedItem;
-            Queries.Instance.deleteCargo(selectedCargo);
+            new Queries().deleteCargo(selectedCargo);
             fillCargoList();
         }
 

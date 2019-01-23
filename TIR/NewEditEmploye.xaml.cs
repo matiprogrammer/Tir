@@ -43,6 +43,7 @@ namespace TIR
 
         private void addEmploye(object sender, RoutedEventArgs e)
         {
+            Queries query = new Queries();
             if (!isEdit)
             {
                 Pracownicy employe = new Pracownicy();
@@ -54,11 +55,12 @@ namespace TIR
                 employe.adres_zamieszkania = address1Box.Text;
                 employe.adres_zatrudnienia = address2Box.Text;
 
-                Queries.Instance.addEmploye(employe);
+                query.addEmploye(employe);
             }
             else
             {
-                var update = Queries.Instance.findEmployeByPesel(peselBox.Text);
+                
+                var update = query.findEmployeByPesel(peselBox.Text);
 
                 foreach(var employe in update)
                 {
@@ -72,7 +74,7 @@ namespace TIR
                 }
 
             }
-            Queries.Instance.submitChanges();
+            query.submitChanges();
 
             this.Close();
         }

@@ -31,7 +31,7 @@ namespace TIR
             kolorTextBox.Text = selectedTir.kolor;
             loadTextBox.Text = selectedTir.maksymalne_dopuszczalne_obciazenie.ToString();
 
-           var currentDriver= Queries.Instance.findEmployeByPesel(selectedTir.nr_pesel_kierowcy);
+           var currentDriver= new Queries().findEmployeByPesel(selectedTir.nr_pesel_kierowcy);
             foreach (var driver in currentDriver)
                 kierowcaTextBox.Text = driver.imie + " "+driver.nazwisko;
 
@@ -43,12 +43,12 @@ namespace TIR
 
         private void SearchCargo(object sender, RoutedEventArgs e)
         {
-            cargoList.ItemsSource = Queries.Instance.findCargo(CargoSearching.Text);
+            cargoList.ItemsSource = new Queries().findCargo(CargoSearching.Text);
         }
 
         private void ClearCargo(object sender, RoutedEventArgs e)
         {
-            cargoList.ItemsSource = Queries.Instance.getAllCargos();
+            cargoList.ItemsSource = new Queries().getAllCargos();
         }
 
         private void NewCargo(object sender, RoutedEventArgs e)

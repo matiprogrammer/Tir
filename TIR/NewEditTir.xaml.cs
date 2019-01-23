@@ -24,11 +24,13 @@ namespace TIR
     public partial class NewEditTir : Window
     {
         public bool isEdit;
+
         public NewEditTir(bool isEdit)
         {
+            Queries query = new Queries();
             this.isEdit = isEdit;
             InitializeComponent();
-                driverBox.ItemsSource = Queries.Instance.findEmployeByJob("kierowca");
+                driverBox.ItemsSource = query.findEmployeByJob("kierowca");
   
 
             if (isEdit)
@@ -44,7 +46,7 @@ namespace TIR
                 producentBox.Text = selectedTir.producent;
                 colorBox.Text = selectedTir.kolor;
                 nrBox.Text = Convert.ToString(selectedTir.nr_rejestracyjny_ciezarowki);
-                var currentDriver= Queries.Instance.findEmployeByPesel(selectedTir.nr_pesel_kierowcy);
+                var currentDriver= query.findEmployeByPesel(selectedTir.nr_pesel_kierowcy);
                 foreach (var driver in currentDriver)
                     driverBox.SelectedItem = driver;
                 add.Content = "Zapisz";
@@ -54,6 +56,7 @@ namespace TIR
 
         private void addTir(object sender, RoutedEventArgs e)
         {
+            Queries query = new Queries();
             if (!isEdit)
             {
                 Ciezarowki tir = new Ciezarowki();
@@ -64,12 +67,12 @@ namespace TIR
                 tir.producent = producentBox.Text;
                 tir.kolor = colorBox.Text;
                 tir.nr_pesel_kierowcy = driverBox.SelectedValue.ToString();
-                Queries.Instance.addTir(tir);
+                query.addTir(tir);
                
             }
             else
             {
-                var update = Queries.Instance.findTirByNr(nrBox.Text);
+                var update = query.findTirByNr(nrBox.Text);
 
                 foreach (var tir in update)
                 {
@@ -83,7 +86,7 @@ namespace TIR
                 }
 
             }
-            Queries.Instance.submitChanges();
+            query.submitChanges();
 
             this.Close();
         }
