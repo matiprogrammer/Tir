@@ -116,10 +116,18 @@ namespace TIR
 
         public Ciezarowki findTirByPesel(string pesel)
         {
-            var search = (from p in dc.Ciezarowkis
-                         where p.nr_pesel_kierowcy == pesel
-                         select p).First();
-            return search;
+            var tirExists = (from p in dc.Ciezarowkis
+                             where p.nr_pesel_kierowcy == pesel
+                             select p).Any();
+            if (tirExists)
+            {
+                var search = (from p in dc.Ciezarowkis
+                              where p.nr_pesel_kierowcy == pesel
+                              select p).First();
+                return search;
+            }
+            return null;
+            
         }
 
 

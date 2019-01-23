@@ -66,8 +66,12 @@ namespace TIR
             Pracownicy selectedItem =(Pracownicy)employeList.SelectedItem;
             // string nr_pesel = selectedItem.nr_pesel;
             //var employe = Queries.Instance.findEmployeByPesel(nr_pesel);
-            Ciezarowki tir= Queries.Instance.findTirByPesel(selectedItem.nr_pesel);
-            tir.nr_pesel_kierowcy = null;
+            if (selectedItem.stanowisko.ToLower() == "kierowca")
+            {
+                Ciezarowki tir = Queries.Instance.findTirByPesel(selectedItem.nr_pesel);
+                if(tir!=null)
+                tir.nr_pesel_kierowcy = null;
+            }
             Queries.Instance.deleteEmploye(selectedItem);
             fillEmployesList();
         }
@@ -177,7 +181,8 @@ namespace TIR
 
         private void NewCargo(object sender, RoutedEventArgs e)
         {
-
+            NewEditCargo newCargoWindow = new NewEditCargo();
+            newCargoWindow.ShowDialog();
         }
 
         private void EditCargo(object sender, RoutedEventArgs e)
