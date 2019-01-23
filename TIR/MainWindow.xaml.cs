@@ -246,7 +246,7 @@ namespace TIR
         {
             Klienci selectedCustomer = (Klienci)CustomerList.SelectedItem;
             Queries.Instance.deleteCustomer(selectedCustomer);
-            fillCargoList();
+            fillCustomerList();
         }
 
         private void CustomerSelectionChanged(object sender, SelectionChangedEventArgs e)
