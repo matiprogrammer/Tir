@@ -125,18 +125,10 @@ namespace TIR
 
         public Ciezarowki findTirByPesel(string pesel)
         {
-            //var tirExists = (from p in dc.Ciezarowkis
-            //                 where p.nr_pesel_kierowcy == pesel
-            //                 select p).Any();
-            //if (tirExists)
-            //{
                 var search = (from p in dc.Ciezarowkis
                               where p.nr_pesel_kierowcy == pesel
                               select p).First();
                 return search;
-            //}
-            //return null;
-            
         }
 
 
@@ -158,7 +150,11 @@ namespace TIR
                         select p;
             return cargo;
         }
-
+        public void addCargo(Ladunki newCargo)
+        {
+            dc.Ladunkis.InsertOnSubmit(newCargo);
+            dc.SubmitChanges();
+        }
 
         public void deleteCargo(Ladunki cargo)
         {
@@ -199,6 +195,7 @@ namespace TIR
         public void addCustomer(Klienci newCustomer)
         {
             dc.Kliencis.InsertOnSubmit(newCustomer);
+            dc.SubmitChanges();
         }
 
         public void deleteCustomer(Klienci customerToDelete)
@@ -209,6 +206,13 @@ namespace TIR
             dc.Kliencis.DeleteOnSubmit(customers);
             dc.SubmitChanges();
         }
+        #endregion
+
+        #region Ładunki
+
+   
+
+
         #endregion
     }
 }

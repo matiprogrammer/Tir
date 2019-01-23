@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
-        Title="NewEditCargo" Height="450" Width="450"  >
+        Title="Dodaj ładunek" Height="450" Width="450"  >
     <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
         <!--<wpfx:DateTimePicker />-->
         <Grid>
@@ -37,17 +37,17 @@
             <TextBlock Text="Rodzaj ładunku:" Margin="6" HorizontalAlignment="Left" Grid.Row="2"/>
             <TextBox Grid.Column="1" Margin="3" Grid.Row="2" Name="kindBox" VerticalContentAlignment="Center"/>
             <TextBlock Text="Adres startu:" Margin="6" HorizontalAlignment="Left" Grid.Row="3"/>
-            <TextBox Grid.Column="1" Margin="3" Grid.Row="3" Name="startAddresBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
+            <TextBox Grid.Column="1" Margin="3" Grid.Row="3" Name="startAddresBox" VerticalContentAlignment="Center"/>
             <TextBlock Text="Adres docelowy:" Margin="6" HorizontalAlignment="Left" Grid.Row="4"/>
             <TextBox Grid.Column="1" Margin="3" Grid.Row="4" Name="destinationAddresBox" VerticalContentAlignment="Center"/>
             <TextBlock Text="Ciezarówka:" Margin="6" HorizontalAlignment="Left" Grid.Row="5"/>
-        <ComboBox Grid.Column="1" Margin="3" Grid.Row="5" Name="tirComboBox" VerticalContentAlignment="Center"  SelectedValuePath="nr_rejestracyjny_ciezarowki"
+            <ComboBox Grid.Column="1" Margin="3" Grid.Row="5" Name="tirComboBox" VerticalContentAlignment="Center"  SelectedValuePath="nr_rejestracyjny_ciezarowki"
                   TextSearch.TextPath="nr_rejestracyjny_ciezarowki" IsSynchronizedWithCurrentItem="True" IsTextSearchEnabled="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1" Padding="3">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Path=nr_rejestracyjny_ciezarowki,StringFormat='Pesel: {0}'}" />
+                            <TextBlock Text="{Binding Path=nr_rejestracyjny_ciezarowki,StringFormat='Nr rejetracyjny {0}'}" />
                         </StackPanel>
                     </Border>
                 </DataTemplate>
@@ -61,7 +61,7 @@
         </StackPanel>
             
             
-        <Grid Name="senderGrid" Grid.ColumnSpan="2"  Margin="3"  Grid.Row="7" Visibility="Hidden" Height="0">
+        <Grid Name="senderGrid" Grid.ColumnSpan="2"  Margin="3"  Grid.Row="7" Visibility="Hidden" Height="0" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
@@ -69,12 +69,12 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBox Name="senderSearching" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right" Width="auto" MinWidth="200"/>
             <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right"  Click="searchSenderButton" />
             
-            <ListView Name="senderList"  HorizontalContentAlignment="Stretch" SelectionChanged="SenderSelectionChanged" ScrollViewer.CanContentScroll="True" MaxHeight="100" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Right" >
+            <ListView Name="senderList" MinHeight="60" MinWidth="350"  HorizontalContentAlignment="Stretch" SelectionChanged="SenderSelectionChanged" ScrollViewer.CanContentScroll="True" MaxHeight="100" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Right" >
             <ListView.View>
                 <GridView >
                     <GridView.Columns>
@@ -106,7 +106,7 @@
             </Grid.RowDefinitions>
             <TextBox Name="recipientSearching" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right" Width="auto" MinWidth="200"/>
             <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="searchRecipientButton" />
-            <ListView Name="recipientList" HorizontalContentAlignment="Stretch" SelectionChanged="RecipientSelectionChanged" ScrollViewer.CanContentScroll="True" MaxHeight="100" HorizontalAlignment="Right" Grid.ColumnSpan="2" Margin="3"  Grid.Row="9">
+                <ListView Name="recipientList" MinHeight="60" MinWidth="350" HorizontalContentAlignment="Stretch" SelectionChanged="RecipientSelectionChanged" ScrollViewer.CanContentScroll="True" MaxHeight="100" HorizontalAlignment="Right" Grid.ColumnSpan="2" Margin="3"  Grid.Row="9">
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>

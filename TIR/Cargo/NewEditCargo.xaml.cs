@@ -20,9 +20,15 @@ namespace TIR
     /// </summary>
     public partial class NewEditCargo : Window
     {
+
         public NewEditCargo()
         {
+            Queries query = new Queries();
             InitializeComponent();
+
+            tirComboBox.ItemsSource = query.getAllTirs();
+            senderList.ItemsSource = query.getAllCustomers();
+            recipientList.ItemsSource = query.getAllCustomers();
         }
 
         private void senderButton_Click(object sender, RoutedEventArgs e)
@@ -82,12 +88,31 @@ namespace TIR
 
         private void addCargo(object sender, RoutedEventArgs e)
         {
+            Queries query = new Queries();
+            Ladunki newCargo= new Ladunki();
+            newCargo.nazwa_ladunku = nameBox.Text;
+            newCargo.waga = Int32.Parse( weightBox.Text);
+            newCargo.adres_docelowy = destinationAddresBox.Text;
+            newCargo.adres_startowy = startAddresBox.Text;
+            newCargo.rodzaj_ladunku = kindBox.Text;
+            newCargo.nr_rejestracyjny_ciezarowki = tirComboBox.SelectedValue.ToString();
+            newCargo.id_nadawcy = ((Klienci)senderList.SelectedItem).id_klienta;
+            newCargo.id_odbiorcy= ((Klienci)recipientList.SelectedItem).id_klienta;
+            newCargo.data_nadania= DateTime.ParseExact(sendDatePicker.Text, "yyyy-MM-dd",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+            newCargo.data_odbioru = DateTime.ParseExact(receiveDatePicker.Text, "yyyy-MM-dd",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+            query.addCargo(newCargo);
 
+
+            query.submitChanges();
+
+            this.Close();
         }
 
         private void Anuluj(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
