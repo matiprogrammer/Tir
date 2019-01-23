@@ -186,9 +186,9 @@ namespace TIR
 
         public IQueryable<Klienci> findCustomerByID(int givenID)
         {
-            var searchCustomer = from p in dc.Kliencis
+            var searchCustomer = (from p in dc.Kliencis
                                   where p.id_klienta == givenID
-                                  select p;
+                                  select p);
             return searchCustomer;
         }
 

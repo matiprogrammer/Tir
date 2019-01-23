@@ -8,7 +8,7 @@
         Title="TIR" Height="450" Width="920">
     <Window.Resources>
         <DataTemplate x:Key="CargoTemplate">
-            
+
         </DataTemplate>
     </Window.Resources>
     <TabControl Name="TabControll">
@@ -16,7 +16,8 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="61*"/>
+                    <ColumnDefinition Width="420*"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
@@ -27,15 +28,15 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                
-                
-                <TextBox Name="EmployeSearching" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
-                <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchEmploye" />
-                <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="2"  Click="ClearEmploye" />
-                <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="NewEmploye" />
-                <Button Content="Edytuj" Name="EmployeEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="EditEmploye" />
-                <Button Content="Usuń" Name="EmployeDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteEmploye" />
-                <ListView Name="employeList" HorizontalContentAlignment="Stretch" SelectionChanged="EmployeSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+
+
+                <TextBox Name="EmployeSearching" Grid.Row="0" Grid.Column="0" Margin="5,9" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
+                <Button Content="Szukaj" Margin="6,6,0,6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchEmploye" />
+                <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="ClearEmploye" />
+                <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="NewEmploye" />
+                <Button Content="Edytuj" Name="EmployeEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="EditEmploye" />
+                <Button Content="Usuń" Name="EmployeDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="6"  Click="DeleteEmploye" />
+                <ListView Name="employeList" HorizontalContentAlignment="Stretch" SelectionChanged="EmployeSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
@@ -46,7 +47,7 @@
                                 <GridViewColumn Width="auto" Header="Stanowisko" DisplayMemberBinding="{Binding stanowisko}"/>
                                 <GridViewColumn Width="auto" Header="Adres zamieszkania" DisplayMemberBinding="{Binding adres_zamieszkania}"/>
                                 <GridViewColumn Width="auto" Header="Adres zatrudnienia" DisplayMemberBinding="{Binding adres_zatrudnienia}"/>
-                                
+
                             </GridView.Columns>
                         </GridView>
                     </ListView.View>
@@ -178,6 +179,6 @@
         <TabItem Width="180" Padding="5" Header="Firmy">
 
         </TabItem>
-        
+
     </TabControl>
 </Window>
