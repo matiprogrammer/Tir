@@ -36,10 +36,10 @@
         <TextBlock Name="loadTextBox" Margin="5" Grid.Column="3" Grid.Row="2"/>
         <TextBlock Text="Kierowca:" Margin="5" Grid.Row="3" Grid.Column="0" />
         <TextBlock Name="kierowcaTextBox" Margin="5" Grid.Column="1" Grid.Row="3" MouseLeftButtonDown="currentDriverClick"/>
-        
+
         <TabControl Grid.Row="4" Grid.ColumnSpan="4">
-            
-        <TabItem Width="200" Padding="5" Header="Lista ładunków">
+
+            <TabItem Width="200" Padding="5" Header="Lista ładunków">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -61,7 +61,7 @@
                     <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="2"  Click="ClearCargo" />
                     <Button Content="Edytuj" Name="CargoEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="EditCargo" />
                     <Button Content="Usuń" Name="CargoDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteCargo" />
-                    <ListView Name="cargoList" HorizontalContentAlignment="Stretch" SelectionChanged="reviewSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                    <ListView Name="cargoList" HorizontalContentAlignment="Stretch" SelectionChanged="CargoSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -76,7 +76,7 @@
                                     <GridViewColumn Width="auto" Header="Ciężarówka" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
                                     <GridViewColumn Width="auto" Header="Nadawca" DisplayMemberBinding="{Binding id_nadawcy}"/>
                                     <GridViewColumn Width="auto" Header="Odbiorca" DisplayMemberBinding="{Binding id_odbiorcy}"/>
-              
+
                                 </GridView.Columns>
                             </GridView>
                         </ListView.View>
@@ -86,7 +86,8 @@
             <TabItem Width="200" Padding="5" Header="Przeglądy">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="54.557"/>
+                        <ColumnDefinition Width="155.443"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
@@ -100,12 +101,11 @@
                     </Grid.RowDefinitions>
 
 
-                    <TextBox Name="reviewSearching" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
-                    <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="clearReview" />
-                    <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="2"  Click="Clearreview" />
-                    <Button Content="Edytuj" Name="reviewEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="Editreview" />
-                    <Button Content="Usuń" Name="reviewDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="Deletereview" />
-                    <ListView Name="reviewList" HorizontalContentAlignment="Stretch" SelectionChanged="CargoSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                    <TextBox Name="reviewSearching" Grid.Row="0" Grid.Column="0" Margin="5,9" VerticalAlignment="Center" Width="auto" MinWidth="200" Grid.ColumnSpan="2"/>
+                    <Button Content="Szukaj" Margin="6,6,0,6" Padding="3" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left"  Click="searchReview" />
+                    <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="Cleareview" />
+                    <Button Content="Usuń" Name="reviewDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="6"  Click="Deletereview" />
+                    <ListView Name="reviewList" HorizontalContentAlignment="Stretch" SelectionChanged="reviewSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>

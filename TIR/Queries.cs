@@ -134,7 +134,7 @@ namespace TIR
 
             var cargo = from p in dc.Ladunkis
                         from k in dc.Kliencis
-                        where p.id_ladunku == number || p.nazwa_ladunku.Contains(inputValue) || (p.id_nadawcy == k.id_klienta && (k.imie.Contains(inputValue) || k.nazwisko.Contains(inputValue)))
+                        where p.id_nadawcy == k.id_klienta && (p.id_ladunku == number || p.nazwa_ladunku.Contains(inputValue) || ( (k.imie.Contains(inputValue) || k.nazwisko.Contains(inputValue))))
                         select p;
             return cargo;
         }
@@ -257,7 +257,7 @@ namespace TIR
 
         #region Przeglady
 
-        public IQueryable<Przeglady> findTirReviews(string nrTir)
+        public IQueryable<Przeglady> findReviewsByTir(string nrTir)
         {
             var tirReviews = (from p in dc.Przegladies
                                    where p.nr_rejestracyjny_ciezarowki == nrTir
@@ -265,7 +265,14 @@ namespace TIR
             return tirReviews;
         }
             
-
+        public void deleteReview(string nrTir,DateTime dateReview )
+        {
+            var review = (from r in dc.Przegladies
+                          where r.nr_rejestracyjny_ciezarowki == nrTir && r.data_przegladu == dateReview
+                          select r).First();
+            dc.Przegladies.DeleteOnSubmit(review);
+            dc.SubmitChanges();
+        }
         
 
 
