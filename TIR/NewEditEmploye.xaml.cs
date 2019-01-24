@@ -31,6 +31,7 @@ namespace TIR
 
             if (isEdit)
             {
+                this.Title = "Edytuj pracownika";
                 this.selectedEmploye =(Pracownicy)((MainWindow)Application.Current.MainWindow).employeList.SelectedItem;
                 peselBox.Text = selectedEmploye.nr_pesel;
                 surnameBox.Text = selectedEmploye.nazwisko;

@@ -38,6 +38,7 @@ namespace TIR
 
             if (isEdit)
             {
+                this.Title = "Edytuj ciężarówkę";
                 
                 Ciezarowki selectedTir =(Ciezarowki)((MainWindow)Application.Current.MainWindow).tirList.SelectedItem;
                 string peseltmp = selectedTir.nr_pesel_kierowcy;

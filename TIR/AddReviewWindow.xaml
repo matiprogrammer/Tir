@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
         Language="pl"
-        Title="Dodaj przeląd" Height="200" Width="400">
+        Title="Dodaj przegląd" Height="200" Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -24,12 +24,12 @@
 
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Data wykonania przegladu:" Margin="6,10,6,6" HorizontalAlignment="Left" />
+        <TextBlock Text="Data wykonania przeglądu:" Margin="6,10,6,6" HorizontalAlignment="Left" />
         <DatePicker Grid.Column="1" Padding="2" Margin="3,10,3,3" Name="firstDateBox" VerticalContentAlignment="Center" ></DatePicker>
-        <TextBlock Text="Data wykonania przegladu:" Margin="6" HorizontalAlignment="Left" Grid.Row="1"/>
+        <TextBlock Text="Data wykonania przeglądu:" Margin="6" HorizontalAlignment="Left" Grid.Row="1"/>
         <DatePicker Grid.Column="1" Margin="3" Grid.Row="1" Name="secondDateBox" VerticalContentAlignment="Center"></DatePicker>
 
-        <TextBlock Text="Firma:" Margin="6" HorizontalAlignment="Left" Grid.Row="4"/>
+        <TextBlock Text="Firma serwisująca:" Margin="6" HorizontalAlignment="Left" Grid.Row="4"/>
         <ComboBox Grid.Column="1" Margin="3" Grid.Row="4" Name="firmBox" VerticalContentAlignment="Center"  SelectedValuePath="nazwa"
                    IsSynchronizedWithCurrentItem="True" IsTextSearchEnabled="True">
             <ComboBox.ItemTemplate>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
-        Title="NewEditCustomer" Height="auto" Width="400">
+        Title="Dodaj klienta" Height="195" Width="400">
     <Window.CommandBindings>
         <CommandBinding Command="local:Commands.AddEditCustomerCommand" Executed="AddEditCustomer_Executed" CanExecute="AddEditCustomer_CanExecute"/>
     </Window.CommandBindings>

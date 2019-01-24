@@ -30,6 +30,7 @@ namespace TIR
 
             if (isEdit)
             {
+                this.Title = "Edytuj firmę serwisującą";
                 this.selectedCompany = (Firmy_serwisujace)((MainWindow)Application.Current.MainWindow).CompanyList.SelectedItem;
 
                 CompanyNameBox.Text = selectedCompany.nazwa;
