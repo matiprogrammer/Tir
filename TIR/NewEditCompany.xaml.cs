@@ -35,6 +35,7 @@ namespace TIR
                 CompanyNameBox.Text = selectedCompany.nazwa;
                 CompanyAddressBox.Text = selectedCompany.adres;
                 CompanyPhoneNumberBox.Text = selectedCompany.nr_telefonu;
+
                 add.Content = "Zapisz";
             }
         }

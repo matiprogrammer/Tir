@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
-        Title="Dodaj ładunek" Height="450" Width="450"  >
+        Title="Dodaj ładunek" Height="auto" Width="450"  >
     <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
         <!--<wpfx:DateTimePicker />-->
         <Grid>

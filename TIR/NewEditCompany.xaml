@@ -18,8 +18,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-
-        <TextBlock Text="Nazwa:" Margin="6" HorizontalAlignment="Left" Grid.Row="1"/>
+        <TextBlock Text="Nazwa:" Margin="6" HorizontalAlignment="Left" Grid.Row="01"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="1" Name="CompanyNameBox" VerticalContentAlignment="Center"/>
         <TextBlock Text="Adres firmy:" Margin="6" HorizontalAlignment="Left" Grid.Row="2"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="2" Name="CompanyAddressBox" VerticalContentAlignment="Center"/>
