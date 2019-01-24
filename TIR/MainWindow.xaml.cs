@@ -39,7 +39,7 @@ namespace TIR
         private void SearchEmploye(object sender, RoutedEventArgs e)
         {
 
-            employeList.ItemsSource = new Queries().findEmploye(EmployeSearching.Text); ;
+            employeList.ItemsSource = new Queries().findEmploye(EmployeSearching.Text);
         }
 
         private void ClearEmploye(object sender, RoutedEventArgs e)
@@ -66,7 +66,7 @@ namespace TIR
             
         }
 
-        private void DeleteEmploye(object sender, RoutedEventArgs e)
+        private void DeleteEmploye()
         {
             Pracownicy selectedItem =(Pracownicy)employeList.SelectedItem;
             // string nr_pesel = selectedItem.nr_pesel;
@@ -85,27 +85,12 @@ namespace TIR
             
         }
 
-        private void EditEmploye(object sender, RoutedEventArgs e)
+        private void EditEmploye()
         {
             NewEditEmploye employeWindow = new NewEditEmploye(true, this);
             employeWindow.ShowDialog();
             fillEmployesList();
-            SearchEmploye(sender, e);
-            
-        }
-
-        private void EmployeSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (employeList.SelectedIndex > -1)
-            {
-                EmployeDeleteButton.IsEnabled = true;
-                EmployeEditButton.IsEnabled = true;
-            }
-            else
-            {
-                EmployeDeleteButton.IsEnabled = false;
-                EmployeEditButton.IsEnabled = false;
-            }
+            employeList.ItemsSource = new Queries().findEmploye(EmployeSearching.Text);
 
         }
 
@@ -130,7 +115,7 @@ namespace TIR
 
         private void SearchTir(object sender, RoutedEventArgs e)
         {
-
+            // Można uprościć?
             var searchTirs = new Queries().findTir(TirSearching.Text);
             if (searchTirs != null)
                 tirList.ItemsSource = searchTirs;
@@ -142,34 +127,19 @@ namespace TIR
             TirSearching.Text = "";
         }
 
-        private void EditTir(object sender, RoutedEventArgs e)
+        private void EditTir()
         {
             NewEditTir tirWindow = new NewEditTir(true);
             tirWindow.ShowDialog();
             fillTirList();
-            SearchTir(sender, e);
-            
+            tirList.ItemsSource = new Queries().findTir(TirSearching.Text);                     //Potencjalne źródło problemów?    
         }
 
-        private void DeleteTir(object sender, RoutedEventArgs e)
+        private void DeleteTir()
         {
-           Ciezarowki selectedItem = (Ciezarowki)tirList.SelectedItem;
+            Ciezarowki selectedItem = (Ciezarowki)tirList.SelectedItem;
             new Queries().deleteTir(selectedItem);
             fillTirList();
-        }
-
-        private void TirSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (tirList.SelectedIndex > -1)
-            {
-                TirDeleteButton.IsEnabled = true;
-                TirEditButton.IsEnabled = true;
-            }
-            else
-            {
-                TirDeleteButton.IsEnabled = false;
-                TirEditButton.IsEnabled = false;
-            }
         }
 
         private void tirChoosen(object sender, MouseButtonEventArgs e)
@@ -201,36 +171,20 @@ namespace TIR
             fillCargoList();
         }
 
-        private void EditCargo(object sender, RoutedEventArgs e)
+        private void EditCargo()
         {
             NewEditCargo newCargoWindow = new NewEditCargo(true,(Ladunki)cargoList.SelectedItem);
             newCargoWindow.ShowDialog();
             fillCargoList();
-            SearchCargo(sender, e);
+            cargoList.ItemsSource = new Queries().findCargo(CargoSearching.Text);
         }
 
-        private void DeleteCargo(object sender, RoutedEventArgs e)
+        private void DeleteCargo()
         {
             Ladunki selectedCargo = (Ladunki)cargoList.SelectedItem;
             new Queries().deleteCargo(selectedCargo);
             fillCargoList();
         }
-
-        private void CargoSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (cargoList.SelectedIndex > -1)
-            {
-                CargoDeleteButton.IsEnabled = true;
-                CargoEditButton.IsEnabled = true;
-            }
-            else
-            {
-                CargoDeleteButton.IsEnabled = false;
-                CargoEditButton.IsEnabled = false;
-            }
-        }
-
-
 
         #region Klienci
 
@@ -257,33 +211,19 @@ namespace TIR
             fillCustomerList();
         }
 
-        private void EditCustomer(object sender, RoutedEventArgs e)
+        private void EditCustomer()
         {
             NewEditCustomer newEditCustomerWindow = new NewEditCustomer(true);
             newEditCustomerWindow.ShowDialog();
             fillCustomerList();
-            SearchCustomer(sender, e);
+            CustomerList.ItemsSource = new Queries().findCustomer(CustomerSearching.Text);
         }
 
-        private void DeleteCustomer(object sender, RoutedEventArgs e)
+        private void DeleteCustomer()
         {
             Klienci selectedCustomer = (Klienci)CustomerList.SelectedItem;
             new Queries().deleteCustomer(selectedCustomer);
             fillCustomerList();
-        }
-
-        private void CustomerSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CustomerList.SelectedIndex > -1)
-            {
-                CustomerDeleteButton.IsEnabled = true;
-                CustomerEditButton.IsEnabled = true;
-            }
-            else
-            {
-                CustomerDeleteButton.IsEnabled = false;
-                CustomerEditButton.IsEnabled = false;
-            }
         }
 
         #endregion
@@ -333,6 +273,18 @@ namespace TIR
             var param = (string)e.Parameter;
             switch (param)
             {
+                case "Employe":
+                    e.CanExecute = employeList.SelectedIndex > -1 ? true : false;
+                    break;
+                case "Cargo":
+                    e.CanExecute = cargoList.SelectedIndex > -1 ? true : false;
+                    break;
+                case "Customer":
+                    e.CanExecute = CustomerList.SelectedIndex > -1 ? true : false;
+                    break;
+                case "TIR":
+                    e.CanExecute = tirList.SelectedIndex > -1 ? true : false;
+                    break;
                 case "Company":
                     e.CanExecute = CompanyList.SelectedIndex > -1 ? true : false;
                     break;
@@ -344,6 +296,18 @@ namespace TIR
             var param = (string)e.Parameter;
             switch (param)
             {
+                case "Employe":
+                    EditEmploye();
+                    break;
+                case "Cargo":
+                    EditCargo();
+                    break;
+                case "Customer":
+                    EditCustomer();
+                    break;
+                case "TIR":
+                    EditTir();
+                    break;
                 case "Company":
                     EditCompany();
                     break;
@@ -356,6 +320,18 @@ namespace TIR
             var param = (string)e.Parameter;
             switch (param)
             {
+                case "Employe":
+                    DeleteEmploye();
+                    break;
+                case "Cargo":
+                    DeleteCargo();
+                    break;
+                case "Customer":
+                    DeleteCustomer();
+                    break;
+                case "TIR":
+                    DeleteTir();
+                    break;
                 case "Company":
                     DeleteCompany();
                     break;

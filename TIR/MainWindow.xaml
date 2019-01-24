@@ -38,9 +38,7 @@
                 <Button Content="Szukaj" Margin="6,6,0,6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchEmploye" />
                 <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="ClearEmploye" />
                 <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="NewEmploye" />
-                <Button Content="Edytuj" Name="EmployeEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="EditEmploye" />
-                <Button Content="Usuń" Name="EmployeDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="6"  Click="DeleteEmploye" />
-                <ListView Name="employeList" HorizontalContentAlignment="Stretch" SelectionChanged="EmployeSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
+                <ListView Name="employeList" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
@@ -56,6 +54,8 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <Button Content="Edytuj" Name="EmployeEditButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="5" Command="local:Commands.EditItemOnListCommand" CommandParameter="Employe" />
+                <Button Content="Usuń" Name="EmployeDeleteButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="6"  Command="local:Commands.DeleteItemFromListCommand" CommandParameter="Employe" />
             </Grid>
         </TabItem>
         <TabItem Width="180" Padding="5" Header="Lista Ładunków" Name="cargos">
@@ -81,9 +81,7 @@
                 <Slider Margin="6" Name="slider"  Padding="3" Grid.Row="0" Grid.Column="2" />
                 <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="ClearCargo" HorizontalAlignment="Right"/>
                 <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="NewCargo" />
-                <Button Content="Edytuj" Name="CargoEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="EditCargo" />
-                <Button Content="Usuń" Name="CargoDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="6"  Click="DeleteCargo" />
-                <ListView Name="cargoList" HorizontalContentAlignment="Stretch" SelectionChanged="CargoSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
+                <ListView Name="cargoList" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
@@ -103,6 +101,8 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <Button Content="Edytuj" Name="CargoEditButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Command="local:Commands.EditItemOnListCommand" CommandParameter="Cargo" />
+                <Button Content="Usuń" Name="CargoDeleteButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="6"  Command="local:Commands.DeleteItemFromListCommand" CommandParameter="Cargo" />
             </Grid>
         </TabItem>
         <TabItem Width="180" Padding="5" Header="Lista Klientów">
@@ -123,9 +123,7 @@
                 <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchCustomer" />
                 <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="2"  Click="ClearCustomer" />
                 <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="NewCustomer" />
-                <Button Content="Edytuj" Name="CustomerEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="EditCustomer" />
-                <Button Content="Usuń" Name="CustomerDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteCustomer" />
-                <ListView Name="CustomerList" HorizontalContentAlignment="Stretch" SelectionChanged="CustomerSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                <ListView Name="CustomerList" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
@@ -138,6 +136,8 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <Button Content="Edytuj" Name="CustomerEditButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Command="local:Commands.EditItemOnListCommand" CommandParameter="Customer"/>
+                <Button Content="Usuń" Name="CustomerDeleteButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Command="local:Commands.DeleteItemFromListCommand" CommandParameter="Customer" />
             </Grid>
         </TabItem>
         <TabItem Width="180" Padding="5" Header="Lista Cięzarówek">
@@ -161,9 +161,7 @@
                 <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchTir" />
                 <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="2"  Click="ClearTir" />
                 <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="NewTir" />
-                <Button Content="Edytuj" Name="TirEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="EditTir" />
-                <Button Content="Usuń" Name="TirDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteTir" />
-                <ListView Name="tirList" HorizontalContentAlignment="Stretch" MouseDoubleClick="tirChoosen" SelectionChanged="TirSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                <ListView Name="tirList" HorizontalContentAlignment="Stretch" MouseDoubleClick="tirChoosen" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
@@ -178,6 +176,8 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <Button Content="Edytuj" Name="TirEditButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Command="local:Commands.EditItemOnListCommand" CommandParameter="TIR" />
+                <Button Content="Usuń" Name="TirDeleteButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Command="local:Commands.DeleteItemFromListCommand" CommandParameter="TIR" />
             </Grid>
         </TabItem>
         <TabItem Width="180" Padding="5" Header="Firmy">
