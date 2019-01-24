@@ -37,11 +37,17 @@ namespace TIR
                 kierowcaTextBox.Text = driver.imie + " "+driver.nazwisko;
 
 
-            cargoList.ItemsSource = query.findCargosByTir(selectedTir.nr_rejestracyjny_ciezarowki);
-            reviewList.ItemsSource = query.findReviewsByTir(selectedTir.nr_rejestracyjny_ciezarowki);
+            refreshLists();
             
 
         }
+        public void refreshLists()
+        {
+            Queries query = new Queries();
+            cargoList.ItemsSource = query.findCargosByTir(selectedTir.nr_rejestracyjny_ciezarowki);
+            reviewList.ItemsSource = query.findReviewsByTir(selectedTir.nr_rejestracyjny_ciezarowki);
+        }
+
         private void currentDriverClick(object sender, MouseButtonEventArgs e)
         {
 
@@ -50,12 +56,12 @@ namespace TIR
 
         private void SearchCargo(object sender, RoutedEventArgs e)
         {
-            cargoList.ItemsSource = new Queries().findCargo(CargoSearching.Text);
+            cargoList.ItemsSource = new Queries().findCargo(CargoSearching.Text, selectedTir.nr_rejestracyjny_ciezarowki);
         }
 
         private void ClearCargo(object sender, RoutedEventArgs e)
         {
-            cargoList.ItemsSource = new Queries().findCargosByTir(selectedTir.nr_rejestracyjny_ciezarowki);
+            refreshLists();
             CargoSearching.Text = "";
         }
 
@@ -63,11 +69,13 @@ namespace TIR
         {
             NewEditCargo editCargoWindow = new NewEditCargo(true,(Ladunki)cargoList.SelectedItem);
             editCargoWindow.ShowDialog();
+            refreshLists();
         }
 
         private void DeleteCargo(object sender, RoutedEventArgs e)
         {
             new Queries().deleteCargo((Ladunki)cargoList.SelectedItem);
+            refreshLists();
         }
 
         private void CargoSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -89,21 +97,29 @@ namespace TIR
         #region Przeglady
         private void reviewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (reviewList.SelectedIndex > -1)
+                reviewDeleteButton.IsEnabled = true;
+            
+            else
+                reviewDeleteButton.IsEnabled = false;
 
-        }
-        private void searchReview(object sender, RoutedEventArgs e)
-        {
-
+            
         }
         private void Cleareview(object sender, RoutedEventArgs e)
         {
             reviewList.ItemsSource = new Queries().findReviewsByTir(selectedTir.nr_rejestracyjny_ciezarowki);
-            reviewSearching.Text = "";
+            
+            refreshLists();
         }
 
         private void Deletereview(object sender, RoutedEventArgs e)
         {
-           // new Queries().deleteReview(selected)
+            new Queries().deleteReview(selectedTir.nr_rejestracyjny_ciezarowki, ((Przeglady)reviewList.SelectedItem).data_przegladu);
+            refreshLists();
+        }
+        private void Addeview(object sender, RoutedEventArgs e)
+        {
+
         }
 
 

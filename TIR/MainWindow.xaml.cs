@@ -90,7 +90,7 @@ namespace TIR
             NewEditEmploye employeWindow = new NewEditEmploye(true, this);
             employeWindow.ShowDialog();
             fillEmployesList();
-            employeList.Items.Refresh();
+            SearchEmploye(sender, e);
             
         }
 
@@ -147,6 +147,7 @@ namespace TIR
             NewEditTir tirWindow = new NewEditTir(true);
             tirWindow.ShowDialog();
             fillTirList();
+            SearchTir(sender, e);
             
         }
 
@@ -205,6 +206,7 @@ namespace TIR
             NewEditCargo newCargoWindow = new NewEditCargo(true,(Ladunki)cargoList.SelectedItem);
             newCargoWindow.ShowDialog();
             fillCargoList();
+            SearchCargo(sender, e);
         }
 
         private void DeleteCargo(object sender, RoutedEventArgs e)
@@ -260,6 +262,7 @@ namespace TIR
             NewEditCustomer newEditCustomerWindow = new NewEditCustomer(true);
             newEditCustomerWindow.ShowDialog();
             fillCustomerList();
+            SearchCustomer(sender, e);
         }
 
         private void DeleteCustomer(object sender, RoutedEventArgs e)
@@ -314,6 +317,7 @@ namespace TIR
             NewEditCompany newEditCompanyWindow = new NewEditCompany(true);
             newEditCompanyWindow.ShowDialog();
             fillCompanyList();
+            SearchCompany(sender, e);
         }
 
         private void DeleteCompany(object sender, RoutedEventArgs e)

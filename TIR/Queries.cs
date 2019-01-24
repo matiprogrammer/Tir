@@ -127,14 +127,26 @@ namespace TIR
             return cargos;
         }
 
-        public IQueryable<Ladunki> findCargo(string inputValue)
+        public IQueryable<Ladunki> findCargo(string inputValue, string nrTir)
         {
             int number=0;
             bool result = Int32.TryParse(inputValue, out number);
 
             var cargo = from p in dc.Ladunkis
                         from k in dc.Kliencis
-                        where p.id_nadawcy == k.id_klienta && (p.id_ladunku == number || p.nazwa_ladunku.Contains(inputValue) || ( (k.imie.Contains(inputValue) || k.nazwisko.Contains(inputValue))))
+                        where p.nr_rejestracyjny_ciezarowki==nrTir && p.id_nadawcy == k.id_klienta && (p.id_ladunku == number || p.nazwa_ladunku.Contains(inputValue) || ( (k.imie.Contains(inputValue) || k.nazwisko.Contains(inputValue))))
+                        select p;
+            return cargo;
+        }
+
+        public IQueryable<Ladunki> findCargo(string inputValue)
+        {
+            int number = 0;
+            bool result = Int32.TryParse(inputValue, out number);
+
+            var cargo = from p in dc.Ladunkis
+                        from k in dc.Kliencis
+                        where p.id_nadawcy == k.id_klienta && (p.id_ladunku == number || p.nazwa_ladunku.Contains(inputValue) || ((k.imie.Contains(inputValue) || k.nazwisko.Contains(inputValue))))
                         select p;
             return cargo;
         }
@@ -273,6 +285,8 @@ namespace TIR
             dc.Przegladies.DeleteOnSubmit(review);
             dc.SubmitChanges();
         }
+
+
         
 
 

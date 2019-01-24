@@ -101,9 +101,9 @@
                     </Grid.RowDefinitions>
 
 
-                    <TextBox Name="reviewSearching" Grid.Row="0" Grid.Column="0" Margin="5,9" VerticalAlignment="Center" Width="auto" MinWidth="200" Grid.ColumnSpan="2"/>
-                    <Button Content="Szukaj" Margin="6,6,0,6" Padding="3" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left"  Click="searchReview" />
+                    
                     <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="Cleareview" />
+                    <Button Content="Dodaj" Name="reviewEditButton"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="Addeview" />
                     <Button Content="Usuń" Name="reviewDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="6"  Click="Deletereview" />
                     <ListView Name="reviewList" HorizontalContentAlignment="Stretch" SelectionChanged="reviewSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
                         <ListView.View>

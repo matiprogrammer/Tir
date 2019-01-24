@@ -44,8 +44,11 @@ namespace TIR
                 startAddresBox.Text = selectedCargo.adres_startowy;
                 destinationAddresBox.Text = selectedCargo.adres_docelowy;
                 var currentTir = query.findTirByNr(selectedCargo.nr_rejestracyjny_ciezarowki);
+
                 foreach (var tir in currentTir)
-                    tirComboBox.SelectedItem = currentTir;
+                {
+                    tirComboBox.SelectedItem = tir;
+                }
 
                 var currentSender = query.findCustomerByID(selectedCargo.id_nadawcy);
                     choosenSender.Text = currentSender.imie+" " + currentSender.nazwisko + " "+ currentSender.adres_zamieszkania;
