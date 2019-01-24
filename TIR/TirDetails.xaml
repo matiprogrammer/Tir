@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
         Language="pl"
-        Title="TirDetails" Height="450" Width="800">
+        Title="Okno szczegołów ciężarówki" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -69,7 +69,7 @@
                                     <GridViewColumn Width="auto" Header="ID ładunku" DisplayMemberBinding="{Binding id_ladunku}"/>
                                     <GridViewColumn Width="auto" Header="Nazwa" DisplayMemberBinding="{Binding nazwa_ladunku}"/>
                                     <GridViewColumn Width="auto" Header="Rodzaj" DisplayMemberBinding="{Binding rodzaj_ladunku}" />
-                                    <GridViewColumn Width="auto" Header="Waga" DisplayMemberBinding="{Binding waga}"/>
+                                    <GridViewColumn Width="auto" Header="Waga [kg]" DisplayMemberBinding="{Binding waga}"/>
                                     <GridViewColumn Width="auto" Header="Adres startowy" DisplayMemberBinding="{Binding adres_startowy}"/>
                                     <GridViewColumn Width="auto" Header="Adres docelowy" DisplayMemberBinding="{Binding adres_docelowy}"/>
                                     <GridViewColumn Width="auto" Header="Data nadania" DisplayMemberBinding="{Binding data_nadania}"/>
@@ -111,9 +111,9 @@
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
-                                    <GridViewColumn Width="auto" Header="Ciezarowka" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
-                                    <GridViewColumn Width="auto" Header="Data przegldu" DisplayMemberBinding="{Binding data_przegladu}"/>
-                                    <GridViewColumn Width="auto" Header="Data nastepnego przegladu" DisplayMemberBinding="{Binding data_nastepnego_serwisu}" />
+                                    <GridViewColumn Width="auto" Header="Ciężarówka" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
+                                    <GridViewColumn Width="auto" Header="Data ostatniego przeglądu" DisplayMemberBinding="{Binding data_przegladu}"/>
+                                    <GridViewColumn Width="auto" Header="Data następnego przegladu" DisplayMemberBinding="{Binding data_nastepnego_serwisu}" />
                                 </GridView.Columns>
                             </GridView>
                         </ListView.View>

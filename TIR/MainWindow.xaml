@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
-        Title="TIR" Height="450" Width="920">
+        Title="Firma Transportowa TIR - Okno Główne" Height="450" Width="920">
     <Window.Resources>
         <DataTemplate x:Key="CargoTemplate">
 
@@ -42,10 +42,10 @@
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
-                                <GridViewColumn Width="auto" Header="Pesel" DisplayMemberBinding="{Binding nr_pesel}"/>
+                                <GridViewColumn Width="auto" Header="PESEL" DisplayMemberBinding="{Binding nr_pesel}"/>
                                 <GridViewColumn Width="auto" Header="Nazwisko" DisplayMemberBinding="{Binding nazwisko}"/>
-                                <GridViewColumn Width="auto" Header="Imie" DisplayMemberBinding="{Binding imie}" />
-                                <GridViewColumn Width="auto" Header="Pensja" DisplayMemberBinding="{Binding pensja}"/>
+                                <GridViewColumn Width="auto" Header="Imię" DisplayMemberBinding="{Binding imie}" />
+                                <GridViewColumn Width="auto" Header="Pensja [zł]" DisplayMemberBinding="{Binding pensja}"/>
                                 <GridViewColumn Width="auto" Header="Stanowisko" DisplayMemberBinding="{Binding stanowisko}"/>
                                 <GridViewColumn Width="auto" Header="Adres zamieszkania" DisplayMemberBinding="{Binding adres_zamieszkania}"/>
                                 <GridViewColumn Width="auto" Header="Adres zatrudnienia" DisplayMemberBinding="{Binding adres_zatrudnienia}"/>
@@ -88,7 +88,7 @@
                                 <GridViewColumn Width="auto" Header="ID ładunku" DisplayMemberBinding="{Binding id_ladunku}"/>
                                 <GridViewColumn Width="auto" Header="Nazwa" DisplayMemberBinding="{Binding nazwa_ladunku}"/>
                                 <GridViewColumn Width="auto" Header="Rodzaj" DisplayMemberBinding="{Binding rodzaj_ladunku}" />
-                                <GridViewColumn Width="auto" Header="Waga" DisplayMemberBinding="{Binding waga}"/>
+                                <GridViewColumn Width="auto" Header="Waga [kg]" DisplayMemberBinding="{Binding waga}"/>
                                 <GridViewColumn Width="auto" Header="Adres startowy" DisplayMemberBinding="{Binding adres_startowy}"/>
                                 <GridViewColumn Width="auto" Header="Adres docelowy" DisplayMemberBinding="{Binding adres_docelowy}"/>
                                 <GridViewColumn Width="auto" Header="Data nadania" DisplayMemberBinding="{Binding data_nadania}"/>
@@ -167,11 +167,11 @@
                             <GridView.Columns>
                                 <GridViewColumn Width="auto" Header="Nr rejestracyjny" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
                                 <GridViewColumn Width="auto" Header="Rocznik" DisplayMemberBinding="{Binding rocznik}"/>
-                                <GridViewColumn Width="auto" Header="Max obciążenie" DisplayMemberBinding="{Binding maksymalne_dopuszczalne_obciazenie}" />
+                                <GridViewColumn Width="auto" Header="Maksymalne obciążenie [kg]" DisplayMemberBinding="{Binding maksymalne_dopuszczalne_obciazenie}" />
                                 <GridViewColumn Width="auto" Header="Kolor" DisplayMemberBinding="{Binding kolor}"/>
                                 <GridViewColumn Width="auto" Header="Model" DisplayMemberBinding="{Binding model}"/>
                                 <GridViewColumn Width="auto" Header="Producent" DisplayMemberBinding="{Binding producent}"/>
-                                <GridViewColumn Width="auto" Header="Pesel kierowcy" DisplayMemberBinding="{Binding nr_pesel_kierowcy}"/>
+                                <GridViewColumn Width="auto" Header="PESEL kierowcy" DisplayMemberBinding="{Binding nr_pesel_kierowcy}"/>
                             </GridView.Columns>
                         </GridView>
                     </ListView.View>

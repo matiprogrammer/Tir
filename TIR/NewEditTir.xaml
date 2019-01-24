@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
-        Title="NewEditTir" Height="290" Width="400">
+        Title="Dodaj ciężarówkę" Height="290" Width="400">
     <Window.CommandBindings>
         <CommandBinding Command="local:Commands.AddEditTirCommand" Executed="AddEditTir_Executed" CanExecute="AddEditTir_CanExecute" />
     </Window.CommandBindings>
@@ -34,7 +34,7 @@
         <TextBox Grid.Column="1" Margin="3" Grid.Row="2" Name="modelBox" VerticalContentAlignment="Center"/>
         <TextBlock Text="Producent:" Margin="6" HorizontalAlignment="Left" Grid.Row="3"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="3" Name="producentBox" VerticalContentAlignment="Center"/>
-        <TextBlock Text="Max obciążenie:" Margin="6" HorizontalAlignment="Left" Grid.Row="4"/>
+        <TextBlock Text="Max obciążenie: [kg]" Margin="6" HorizontalAlignment="Left" Grid.Row="4"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="4" Name="loadBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
         <TextBlock Text="Kolor:" Margin="6" HorizontalAlignment="Left" Grid.Row="5"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="5" Name="colorBox" VerticalContentAlignment="Center"/>
