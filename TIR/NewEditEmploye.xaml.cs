@@ -22,6 +22,8 @@ namespace TIR
     {
         public bool isEdit;
         private Pracownicy selectedEmploye;
+
+        public decimal pensja;
         public NewEditEmploye(bool isEdit, Window mainWindow)
         {
             InitializeComponent();
@@ -41,44 +43,6 @@ namespace TIR
             }
         }
 
-        private void addEmploye(object sender, RoutedEventArgs e)
-        {
-            Queries query = new Queries();
-            if (!isEdit)
-            {
-                Pracownicy employe = new Pracownicy();
-                employe.nr_pesel = peselBox.Text;
-                employe.nazwisko = surnameBox.Text;
-                employe.imie = nameBox.Text;
-                employe.pensja = decimal.Parse(salaryBox.Text);
-                employe.stanowisko = jobBox.Text;
-                employe.adres_zamieszkania = address1Box.Text;
-                employe.adres_zatrudnienia = address2Box.Text;
-
-                query.addEmploye(employe);
-            }
-            else
-            {
-                
-                var update = query.findEmployeByPesel(peselBox.Text);
-
-                foreach(var employe in update)
-                {
-                    employe.nr_pesel= peselBox.Text;
-                    employe.nazwisko = surnameBox.Text;
-                    employe.imie = nameBox.Text;
-                    employe.pensja = decimal.Parse(salaryBox.Text);
-                    employe.stanowisko = jobBox.Text;
-                    employe.adres_zamieszkania = address1Box.Text;
-                    employe.adres_zatrudnienia = address2Box.Text;
-                }
-
-            }
-            query.submitChanges();
-
-            this.Close();
-        }
-
         private void Anuluj(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -88,6 +52,61 @@ namespace TIR
         {
             Regex regex = new Regex("[^0-9]");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void AddEditEmploye_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = string.IsNullOrEmpty(peselBox.Text) || string.IsNullOrEmpty(surnameBox.Text) || string.IsNullOrEmpty(nameBox.Text) ||
+                !decimal.TryParse(salaryBox.Text, out pensja) || string.IsNullOrEmpty(jobBox.Text) || string.IsNullOrEmpty(address1Box.Text) ||
+                string.IsNullOrEmpty(address2Box.Text) ? false : true;
+        }
+
+        private void AddEditEmploye_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            string nr_pesel = peselBox.Text;
+            string nazwisko = surnameBox.Text;
+            string imie = nameBox.Text;
+            string stanowisko = jobBox.Text;
+            string adres_zamieszkania = address1Box.Text;
+            string adres_zatrudnienia = address2Box.Text;
+
+            #region Walidacja danych pracownika
+            #endregion
+
+            Queries query = new Queries();
+            if (!isEdit)
+            {
+                Pracownicy employe = new Pracownicy();
+                employe.nr_pesel = nr_pesel;
+                employe.nazwisko = nazwisko;
+                employe.imie = imie;
+                employe.pensja = pensja;
+                employe.stanowisko = stanowisko;
+                employe.adres_zamieszkania = adres_zamieszkania;
+                employe.adres_zatrudnienia = adres_zatrudnienia;
+
+                query.addEmploye(employe);
+            }
+            else
+            {
+
+                var update = query.findEmployeByPesel(nr_pesel);
+
+                foreach (var employe in update)
+                {
+                    employe.nr_pesel = nr_pesel;
+                    employe.nazwisko = nazwisko;
+                    employe.imie = imie;
+                    employe.pensja = pensja;
+                    employe.stanowisko = stanowisko;
+                    employe.adres_zamieszkania = adres_zamieszkania;
+                    employe.adres_zatrudnienia = adres_zatrudnienia;
+                }
+
+            }
+            query.submitChanges();
+
+            this.Close();
         }
     }
 }
