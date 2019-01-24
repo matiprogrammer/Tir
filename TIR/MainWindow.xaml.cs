@@ -316,25 +316,11 @@ namespace TIR
             fillCompanyList();
         }
 
-        private void DeleteCompany(object sender, RoutedEventArgs e)
+        private void DeleteCompany()
         {
             Firmy_serwisujace selectedCompany = (Firmy_serwisujace)CompanyList.SelectedItem;
             new Queries().deleteCompany(selectedCompany);
             fillCompanyList();
-        }
-
-        private void CompanySelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CompanyList.SelectedIndex > -1)
-            {
-                CompanyDeleteButton.IsEnabled = true;
-                CompanyEditButton.IsEnabled = true;
-            }
-            else
-            {
-                CompanyDeleteButton.IsEnabled = false;
-                CompanyEditButton.IsEnabled = false;
-            }
         }
         #endregion
 
@@ -350,6 +336,28 @@ namespace TIR
         }
 
         private void EditItemOnList_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            var param = (string)e.Parameter;
+            switch (param)
+            {
+                case "Company":
+                    e.CanExecute = CompanyList.SelectedIndex > -1 ? true : false;
+                    break;
+            }
+        }
+
+        private void DeleteItemFromList_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var param = (string)e.Parameter;
+            switch (param)
+            {
+                case "Company":
+                    DeleteCompany();
+                    break;
+            }
+        }
+
+        private void DeleteItemFromList_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             var param = (string)e.Parameter;
             switch (param)
