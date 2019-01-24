@@ -317,7 +317,7 @@ namespace TIR
             NewEditCompany newEditCompanyWindow = new NewEditCompany(true);
             newEditCompanyWindow.ShowDialog();
             fillCompanyList();
-            SearchCompany(sender, e);
+            CompanyList.ItemsSource = new Queries().findCompany(CompanySearching.Text);
         }
 
         private void DeleteCompany()
