@@ -195,14 +195,14 @@ namespace TIR
 
         private void NewCargo(object sender, RoutedEventArgs e)
         {
-            NewEditCargo newCargoWindow = new NewEditCargo(false);
+            NewEditCargo newCargoWindow = new NewEditCargo(false,null );
             newCargoWindow.ShowDialog();
             fillCargoList();
         }
 
         private void EditCargo(object sender, RoutedEventArgs e)
         {
-            NewEditCargo newCargoWindow = new NewEditCargo(true);
+            NewEditCargo newCargoWindow = new NewEditCargo(true,(Ladunki)cargoList.SelectedItem);
             newCargoWindow.ShowDialog();
             fillCargoList();
         }

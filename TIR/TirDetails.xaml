@@ -59,10 +59,9 @@
                     <TextBox Name="CargoSearching" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
                     <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchCargo" />
                     <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="2"  Click="ClearCargo" />
-                    <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="NewCargo" />
                     <Button Content="Edytuj" Name="CargoEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="EditCargo" />
                     <Button Content="Usuń" Name="CargoDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteCargo" />
-                    <ListView Name="cargoList" HorizontalContentAlignment="Stretch" SelectionChanged="CargoSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                    <ListView Name="cargoList" HorizontalContentAlignment="Stretch" SelectionChanged="reviewSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -77,6 +76,7 @@
                                     <GridViewColumn Width="auto" Header="Ciężarówka" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
                                     <GridViewColumn Width="auto" Header="Nadawca" DisplayMemberBinding="{Binding id_nadawcy}"/>
                                     <GridViewColumn Width="auto" Header="Odbiorca" DisplayMemberBinding="{Binding id_odbiorcy}"/>
+              
                                 </GridView.Columns>
                             </GridView>
                         </ListView.View>
@@ -84,7 +84,39 @@
                 </Grid>
             </TabItem>
             <TabItem Width="200" Padding="5" Header="Przeglądy">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
 
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <TextBox Name="reviewSearching" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
+                    <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="clearReview" />
+                    <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="2"  Click="Clearreview" />
+                    <Button Content="Edytuj" Name="reviewEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="Editreview" />
+                    <Button Content="Usuń" Name="reviewDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="Deletereview" />
+                    <ListView Name="reviewList" HorizontalContentAlignment="Stretch" SelectionChanged="CargoSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Width="auto" Header="ID ładunku" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
+                                    <GridViewColumn Width="auto" Header="Nazwa" DisplayMemberBinding="{Binding data_przegladu}"/>
+                                    <GridViewColumn Width="auto" Header="Rodzaj" DisplayMemberBinding="{Binding data_nastepnego_serwisu}" />
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
             </TabItem>
             <TabItem Width="200" Padding="5" Header="Naprawy">
 

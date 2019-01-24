@@ -19,11 +19,12 @@ namespace TIR
     /// </summary>
     public partial class TirDetails : Window
     {
-        
+        private Ciezarowki selectedTir;
         public TirDetails()
         {
+            Queries query = new Queries();
             InitializeComponent();
-            Ciezarowki selectedTir = (Ciezarowki)((MainWindow)Application.Current.MainWindow).tirList.SelectedItem;
+            selectedTir = (Ciezarowki)((MainWindow)Application.Current.MainWindow).tirList.SelectedItem;
             nr_rejestracyjnyTextBox.Text = selectedTir.nr_rejestracyjny_ciezarowki;
             rocznikTextBox.Text = selectedTir.rocznik.ToString();
             modelTextBox.Text = selectedTir.model;
@@ -36,10 +37,16 @@ namespace TIR
                 kierowcaTextBox.Text = driver.imie + " "+driver.nazwisko;
 
 
-            //cargoList.ItemsSource=
+            cargoList.ItemsSource = query.findCargosByTir(selectedTir.nr_rejestracyjny_ciezarowki);
+            reviewList.ItemsSource = query.findTirReviews(selectedTir.nr_rejestracyjny_ciezarowki);
+            
 
         }
+        private void currentDriverClick(object sender, MouseButtonEventArgs e)
+        {
 
+        }
+        #region Ladunki ciezrowki
 
         private void SearchCargo(object sender, RoutedEventArgs e)
         {
@@ -48,32 +55,54 @@ namespace TIR
 
         private void ClearCargo(object sender, RoutedEventArgs e)
         {
-            cargoList.ItemsSource = new Queries().getAllCargos();
-        }
-
-        private void NewCargo(object sender, RoutedEventArgs e)
-        {
-
+            cargoList.ItemsSource = new Queries().findCargosByTir(selectedTir.nr_rejestracyjny_ciezarowki);
+            CargoSearching.Text = "";
         }
 
         private void EditCargo(object sender, RoutedEventArgs e)
         {
-
+            NewEditCargo editCargoWindow = new NewEditCargo(true,(Ladunki)cargoList.SelectedItem);
+            editCargoWindow.ShowDialog();
         }
 
         private void DeleteCargo(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void CargoSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+        #endregion
 
-        private void currentDriverClick(object sender, MouseButtonEventArgs e)
+
+        #region Przeglady
+        private void reviewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+
+        private void clearReview(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Clearreview(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Editreview(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Deletereview(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }

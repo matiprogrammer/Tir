@@ -8,20 +8,8 @@ namespace TIR
 {
     class Queries
     {
-
-        // private static Queries baseInstance = null;
         private LinqToSQLDataContext dc;
-        //public static Queries Instance
-        //{
-        //    get
-        //    {
-        //        if(baseInstance==null)
-        //        {
-        //            baseInstance = new Queries();
-        //        }
-        //        return baseInstance;
-        //    }
-        //}
+
 
         public Queries() { dc = new LinqToSQLDataContext(Properties.Settings.Default.TransportCompanyConnectionString); }
 
@@ -146,7 +134,7 @@ namespace TIR
 
             var cargo = from p in dc.Ladunkis
                         from k in dc.Kliencis
-                        where p.id_ladunku == number || p.nazwa_ladunku == inputValue || (p.id_nadawcy == k.id_klienta && (k.imie.Contains(inputValue) || k.nazwisko.Contains(inputValue)))
+                        where p.id_ladunku == number || p.nazwa_ladunku.Contains(inputValue) || (p.id_nadawcy == k.id_klienta && (k.imie.Contains(inputValue) || k.nazwisko.Contains(inputValue)))
                         select p;
             return cargo;
         }
@@ -156,8 +144,15 @@ namespace TIR
             var cargo = (from p in dc.Ladunkis
                           where p.id_ladunku == id
                           select p);
-            Console.WriteLine(id);
             return cargo;
+        }
+
+        public IQueryable<Ladunki> findCargosByTir(string nr_tir)
+        {
+            var cargos= (from p in dc.Ladunkis
+                         where p.nr_rejestracyjny_ciezarowki == nr_tir
+                         select p);
+            return cargos;
         }
         public void addCargo(Ladunki newCargo)
         {
@@ -260,9 +255,18 @@ namespace TIR
         }
         #endregion
 
-        #region Ładunki
+        #region Przeglady
 
+        public IQueryable<Przeglady> findTirReviews(string nrTir)
+        {
+            var tirReviews = (from p in dc.Przegladies
+                                   where p.nr_rejestracyjny_ciezarowki == nrTir
+                                   select p);
+            return tirReviews;
+        }
+            
 
+        
 
 
         #endregion

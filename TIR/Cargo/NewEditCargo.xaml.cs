@@ -23,7 +23,7 @@ namespace TIR
     {
         public bool isEdit;
         Ladunki selectedCargo;
-        public NewEditCargo(bool isEdit)
+        public NewEditCargo(bool isEdit, Ladunki selectedCargo)
         {
 
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace TIR
             if (isEdit)
             {
                 this.Title = "Edytuj ładunek";
-                selectedCargo= (Ladunki)((MainWindow)Application.Current.MainWindow).cargoList.SelectedItem;
+                this.selectedCargo = selectedCargo;
                 nameBox.Text = selectedCargo.nazwa_ladunku;
                 weightBox.Text = Convert.ToString(selectedCargo.waga);
                 kindBox.Text = selectedCargo.rodzaj_ladunku;
