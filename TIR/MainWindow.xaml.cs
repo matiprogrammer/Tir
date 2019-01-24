@@ -312,7 +312,7 @@ namespace TIR
             fillCompanyList();
         }
 
-        private void EditCompany(object sender, RoutedEventArgs e)
+        private void EditCompany()
         {
             NewEditCompany newEditCompanyWindow = new NewEditCompany(true);
             newEditCompanyWindow.ShowDialog();
@@ -320,26 +320,56 @@ namespace TIR
             SearchCompany(sender, e);
         }
 
-        private void DeleteCompany(object sender, RoutedEventArgs e)
+        private void DeleteCompany()
         {
             Firmy_serwisujace selectedCompany = (Firmy_serwisujace)CompanyList.SelectedItem;
             new Queries().deleteCompany(selectedCompany);
             fillCompanyList();
         }
+        #endregion
 
-        private void CompanySelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void EditItemOnList_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            if (CompanyList.SelectedIndex > -1)
+            var param = (string)e.Parameter;
+            switch (param)
             {
-                CompanyDeleteButton.IsEnabled = true;
-                CompanyEditButton.IsEnabled = true;
-            }
-            else
-            {
-                CompanyDeleteButton.IsEnabled = false;
-                CompanyEditButton.IsEnabled = false;
+                case "Company":
+                    EditCompany();
+                    break;
             }
         }
-        #endregion
+
+        private void EditItemOnList_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            var param = (string)e.Parameter;
+            switch (param)
+            {
+                case "Company":
+                    e.CanExecute = CompanyList.SelectedIndex > -1 ? true : false;
+                    break;
+            }
+        }
+
+        private void DeleteItemFromList_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var param = (string)e.Parameter;
+            switch (param)
+            {
+                case "Company":
+                    DeleteCompany();
+                    break;
+            }
+        }
+
+        private void DeleteItemFromList_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            var param = (string)e.Parameter;
+            switch (param)
+            {
+                case "Company":
+                    e.CanExecute = CompanyList.SelectedIndex > -1 ? true : false;
+                    break;
+            }
+        }
     }
 }
