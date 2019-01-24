@@ -67,20 +67,22 @@ namespace TIR
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void RegistrationNumberValidation(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("^[A-Z]{2,3}[0-9]{1}[A-Z0-9]+$");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
         private void AddEditTir_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            Regex regex = new Regex("^[A-Z]{2,3}[0-9]{1}[A-Z0-9]+$");
+
             string nr_rejestracyjny_ciezarowki = nrBox.Text;
             string model = modelBox.Text;
             string producent = producentBox.Text;
             string kolor = colorBox.Text;
 
             #region Walidacja danych
+            if (!regex.IsMatch(nr_rejestracyjny_ciezarowki))
+            {
+                MessageBox.Show("Podany numer rejestracyjny ciężarówki jest nieprawidłowy. Numer musi zawierać 2 lub 3 wielkie litery, przynajmniej 1 cyfrę a potem cyfry i/lub wielkie ltery do 10 znaków!",
+                    "Nieprawidłowy format numery rejestracyjnego", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             if(nr_rejestracyjny_ciezarowki.Length > 10)
             {
                 MessageBox.Show("Numer rejestracyjny ciężarówki nie może zawierać ponad 10 znaków!", "Zbyt długi numer rejestracyjny", MessageBoxButton.OK, MessageBoxImage.Error);
