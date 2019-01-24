@@ -62,6 +62,9 @@
     <Compile Include="Cargo\NewEditCargo.xaml.cs">
       <DependentUpon>NewEditCargo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewEditCompany.xaml.cs">
+      <DependentUpon>NewEditCompany.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NewEditCustomer.xaml.cs">
       <DependentUpon>NewEditCustomer.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Cargo\NewEditCargo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewEditCompany.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,42 @@
+﻿<Window x:Class="TIR.NewEditCompany"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TIR"
+        mc:Ignorable="d"
+        Title="NewEditCompany" Height="180" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Nazwa:" Margin="6" HorizontalAlignment="Left" Grid.Row="1"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="1" Name="CompanyNameBox" VerticalContentAlignment="Center"/>
+        <TextBlock Text="Adres firmy:" Margin="6" HorizontalAlignment="Left" Grid.Row="2"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="2" Name="CompanyAddressBox" VerticalContentAlignment="Center"/>
+        <TextBlock Text="Numer telefonu:" Margin="6" HorizontalAlignment="Left" Grid.Row="3"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="3" Name="CompanyPhoneNumberBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
+
+        <Grid Grid.Column="1" Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Button Content="Dodaj"  Name="add" Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Click="AddCompany"/>
+            <Button Content="Anuluj"  Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Click="Anuluj"/>
+        </Grid>
+    </Grid>
+</Window>
