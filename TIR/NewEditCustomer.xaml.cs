@@ -30,6 +30,7 @@ namespace TIR
 
             if (isEdit)
             {
+                this.Title = "Edytuj klienta";
                 this.selectedCustomer = (Klienci)((MainWindow)Application.Current.MainWindow).CustomerList.SelectedItem;
 
                 CustomerFirstNameBox.Text = selectedCustomer.imie;
