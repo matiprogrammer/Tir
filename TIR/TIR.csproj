@@ -62,6 +62,7 @@
     <Compile Include="Cargo\NewEditCargo.xaml.cs">
       <DependentUpon>NewEditCargo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands.cs" />
     <Compile Include="NewEditCompany.xaml.cs">
       <DependentUpon>NewEditCompany.xaml</DependentUpon>
     </Compile>
