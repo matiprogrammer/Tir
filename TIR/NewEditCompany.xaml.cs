@@ -76,7 +76,7 @@ namespace TIR
                 return;
             }
 
-            if (adres.Length < 5)
+            if (adres.Length < 8)
             {
                 MessageBox.Show("Adres firmy serwisującej musi mieć conajmniej 8 znaków!", "Zbyt krótki adres", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
