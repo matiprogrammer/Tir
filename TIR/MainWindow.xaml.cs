@@ -309,7 +309,7 @@ namespace TIR
             fillCompanyList();
         }
 
-        private void EditCompany(object sender, RoutedEventArgs e)
+        private void EditCompany()
         {
             NewEditCompany newEditCompanyWindow = new NewEditCompany(true);
             newEditCompanyWindow.ShowDialog();
@@ -337,5 +337,27 @@ namespace TIR
             }
         }
         #endregion
+
+        private void EditItemOnList_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var param = (string)e.Parameter;
+            switch (param)
+            {
+                case "Company":
+                    EditCompany();
+                    break;
+            }
+        }
+
+        private void EditItemOnList_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            var param = (string)e.Parameter;
+            switch (param)
+            {
+                case "Company":
+                    e.CanExecute = CompanyList.SelectedIndex > -1 ? true : false;
+                    break;
+            }
+        }
     }
 }

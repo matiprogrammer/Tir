@@ -11,6 +11,9 @@
 
         </DataTemplate>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Commands.EditItemOnListCommand" Executed="EditItemOnList_Executed" CanExecute="EditItemOnList_CanExecute" />
+    </Window.CommandBindings>
     <TabControl Name="TabControll">
         <TabItem Width="180" Padding="5" Header="Lista Pracowników" Name="employes">
             <Grid>
@@ -194,8 +197,6 @@
                 <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchCompany" />
                 <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="2"  Click="ClearCompany" />
                 <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="NewCompany" />
-                <Button Content="Edytuj" Name="CompanyEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="EditCompany" />
-                <Button Content="Usuń" Name="CompanyDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteCompany" />
                 <ListView Name="CompanyList" HorizontalContentAlignment="Stretch" SelectionChanged="CompanySelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
                     <ListView.View>
                         <GridView>
@@ -208,6 +209,8 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <Button Content="Edytuj" Name="CompanyEditButton" IsEnabled="False" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Command="local:Commands.EditItemOnListCommand" CommandParameter="Company" />
+                <Button Content="Usuń" Name="CompanyDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteCompany" />
             </Grid>
         </TabItem>
 
