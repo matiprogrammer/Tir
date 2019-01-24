@@ -13,6 +13,7 @@ namespace TIR
         public static RoutedUICommand AddEditCustomerCommand { get; private set; }
         public static RoutedUICommand AddEditEmployeCommand { get; private set; }
         public static RoutedUICommand AddEditTirCommand { get; private set; }
+        public static RoutedUICommand AddEditCargoCommand { get; private set; }
 
         public static RoutedUICommand EditItemOnListCommand { get; private set; }
         public static RoutedUICommand DeleteItemFromListCommand { get; private set; }
@@ -22,6 +23,7 @@ namespace TIR
             AddEditCustomerCommand = new RoutedUICommand("Add or Edit Customer", "AddEditCustomer", typeof(Commands));
             AddEditEmployeCommand = new RoutedUICommand("Add or Edit Employe", "AddEditEmploye", typeof(Commands));
             AddEditTirCommand = new RoutedUICommand("Add or Edit Tir", "AddEditTir", typeof(Commands));
+            AddEditCargoCommand = new RoutedUICommand("Add or Edit Cargo", "AddEditCargo", typeof(Commands));
 
             EditItemOnListCommand = new RoutedUICommand("Edit selected item on specific list", "EditItemOnList", typeof(Commands));
             DeleteItemFromListCommand = new RoutedUICommand("Delete selected item from specific list", "DeleteItemFromList", typeof(Commands));

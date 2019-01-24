@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
         Title="Dodaj ładunek" Height="auto" Width="450"  >
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Commands.AddEditCargoCommand" CanExecute="AddEditCargo_CanExecute" Executed="AddEditCargo_Executed" />
+    </Window.CommandBindings>
     <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
         <!--<wpfx:DateTimePicker />-->
         <Grid>
@@ -131,7 +134,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Button Content="Dodaj"  Name="add" Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Click="addCargo"/>
+                <Button Content="Dodaj"  Name="add" Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Command="local:Commands.AddEditCargoCommand"/>
                 <Button Content="Anuluj"  Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Click="Anuluj"/>
             </Grid>
         </Grid>
