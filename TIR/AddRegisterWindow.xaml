@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
         Language="pl"
-        Title="Rejsetr napraw" Height="450" Width="400">
+        Title="Rejsetr napraw" Height="450" Width="420">
     <Grid>
-        <Grid>
+        <!--<Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -21,8 +21,9 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Nr rejestracyjny:" Margin="6" HorizontalAlignment="Left" Grid.Row="01"/>
+            <TextBlock Text="Nr rejestracyjny:" Margin="6" HorizontalAlignment="Left" Grid.Row="1"/>
             <TextBlock Grid.Column="1" Margin="3" Grid.Row="1" Name="NrTirBox" />
             <TextBlock Text="Data_naprawy:" Margin="6" HorizontalAlignment="Left" Grid.Row="2"/>
             <DatePicker Grid.Column="1" Margin="3" Grid.Row="2" Name="repairDateBox" VerticalContentAlignment="Center"></DatePicker>
@@ -44,28 +45,44 @@
             </ComboBox>
             <TextBlock Text="Koszt:" Margin="6" HorizontalAlignment="Left" Grid.Row="4"/>
             <TextBox Grid.Column="1" Margin="3" Grid.Row="4" Name="priceBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
-            
-            <Button Content="Dodaj czesc" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="NewEmploye" />
-            <ListView Name="employeList" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
-                <ListView.View>
-                    <GridView>
-                        <GridView.Columns>
-                            <GridViewColumn Width="auto" Header="Pesel" DisplayMemberBinding="{Binding nr_pesel}"/>
-                            <GridViewColumn Width="auto" Header="Nazwisko" DisplayMemberBinding="{Binding nazwisko}"/>
-                            <GridViewColumn Width="auto" Header="Imie" DisplayMemberBinding="{Binding imie}" />
-                            <GridViewColumn Width="auto" Header="Pensja" DisplayMemberBinding="{Binding pensja}"/>
-                            <GridViewColumn Width="auto" Header="Stanowisko" DisplayMemberBinding="{Binding stanowisko}"/>
-                            <GridViewColumn Width="auto" Header="Adres zamieszkania" DisplayMemberBinding="{Binding adres_zamieszkania}"/>
-                            <GridViewColumn Width="auto" Header="Adres zatrudnienia" DisplayMemberBinding="{Binding adres_zatrudnienia}"/>
 
-                        </GridView.Columns>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <Button Content="Edytuj" Name="EmployeEditButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="5" Command="local:Commands.EditItemOnListCommand" CommandParameter="Employe" />
-            <Button Content="Usuń" Name="EmployeDeleteButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="6"  Command="local:Commands.DeleteItemFromListCommand" CommandParameter="Employe" />
-            
-            <Grid Grid.Column="1" Grid.Row="6">
+            <Grid Grid.Row="5" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="61*"/>
+                    <ColumnDefinition Width="420*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <TextBox Name="EmployeSearching" Grid.Row="0" Grid.Column="0" Margin="5,9" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
+                <Button Content="Szukaj" Margin="6,6,0,6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchEmploye" />
+                <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="ClearEmploye" />
+                <Button Content="Dodaj część" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="NewEmploye" />
+                <ListView Name="employeList" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Width="auto" Header="Pesel" DisplayMemberBinding="{Binding nr_pesel}"/>
+                                <GridViewColumn Width="auto" Header="Nazwisko" DisplayMemberBinding="{Binding nazwisko}"/>
+
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button Content="Edytuj" Name="EmployeEditButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="5" Command="local:Commands.EditItemOnListCommand" CommandParameter="Employe" />
+                <Button Content="Usuń" Name="EmployeDeleteButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="6"  Command="local:Commands.DeleteItemFromListCommand" CommandParameter="Employe" />
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="7">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
@@ -78,6 +95,6 @@
                 <Button Content="Anuluj"  Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Click="Anuluj"/>
             </Grid>
             
-        </Grid>
+        </Grid>-->
     </Grid>
 </Window>
