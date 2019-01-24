@@ -36,6 +36,7 @@ namespace TIR
             fillCompanyList();
         }
 
+        #region Pracownicy
         private void SearchEmploye(object sender, RoutedEventArgs e)
         {
 
@@ -93,9 +94,9 @@ namespace TIR
             employeList.ItemsSource = new Queries().findEmploye(EmployeSearching.Text);
 
         }
+        #endregion
 
-        //------------------------------------------------------------------------------------------------------------ Ciezarowki------------------------------------------------
-
+        #region Ciężarówki
         private void fillTirList()
         {   
             //var x= Queries.Instance.getAllTirs();
@@ -147,8 +148,9 @@ namespace TIR
             TirDetails tirDetailsWindow = new TirDetails();
             tirDetailsWindow.Show();
         }
+        #endregion
 
-        //----------------------------------------------------------------------------------------------------------------LADUNKI-------------------------------------
+        #region Ładunki
         private void fillCargoList()
         {
             cargoList.ItemsSource = new Queries().getAllCargos();
@@ -185,6 +187,7 @@ namespace TIR
             new Queries().deleteCargo(selectedCargo);
             fillCargoList();
         }
+        #endregion
 
         #region Klienci
 
@@ -313,7 +316,6 @@ namespace TIR
                     break;
             }
         }
-
 
         private void DeleteItemFromList_Executed(object sender, ExecutedRoutedEventArgs e)
         {
