@@ -59,6 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddRegisterWindow.xaml.cs">
+      <DependentUpon>AddRegisterWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddReviewWindow.xaml.cs">
       <DependentUpon>AddReviewWindow.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
     <Compile Include="TirDetails.xaml.cs">
       <DependentUpon>TirDetails.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddRegisterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddReviewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

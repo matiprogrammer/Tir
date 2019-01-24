@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
+        Language="pl"
         Title="TirDetails" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -103,7 +104,7 @@
 
 
 
-                    <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="Cleareview" />
+                   
                     <Button Content="Dodaj" Name="reviewEditButton"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="Addreview" Grid.ColumnSpan="2" />
                     <Button Content="Usuń" Name="reviewDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="7"  Click="Deletereview" />
                     <ListView Name="reviewList" HorizontalContentAlignment="Stretch" SelectionChanged="reviewSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="8">
@@ -120,7 +121,39 @@
                 </Grid>
             </TabItem>
             <TabItem Width="200" Padding="5" Header="Naprawy">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
 
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <DatePicker Grid.Column="0" Padding="2" Margin="3" Name="searchDateBox" VerticalContentAlignment="Center" ></DatePicker>
+                    <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchRegister" ></Button>
+                    <Button Content="Dodaj" Name="registerAddButton"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="addRegister" />
+                    <Button Content="Usuń" Name="registerDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="DeleteRegister" />
+                    <ListView Name="registerList" HorizontalContentAlignment="Stretch" SelectionChanged="RegisterSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="6">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Width="auto" Header="ID ładunku" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
+                                    <GridViewColumn Width="auto" Header="Nazwa" DisplayMemberBinding="{Binding data_naprawy}"/>
+                                    <GridViewColumn Width="auto" Header="Rodzaj" DisplayMemberBinding="{Binding nr_nip_serwisu}" />
+                                    <GridViewColumn Width="auto" Header="Waga" DisplayMemberBinding="{Binding koszt_robocizny}"/>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

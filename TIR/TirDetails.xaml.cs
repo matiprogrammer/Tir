@@ -46,6 +46,7 @@ namespace TIR
             Queries query = new Queries();
             cargoList.ItemsSource = query.findCargosByTir(selectedTir.nr_rejestracyjny_ciezarowki);
             reviewList.ItemsSource = query.findReviewsByTir(selectedTir.nr_rejestracyjny_ciezarowki);
+            registerList.ItemsSource = query.findRegistersByTir(selectedTir.nr_rejestracyjny_ciezarowki);
         }
 
         private void currentDriverClick(object sender, MouseButtonEventArgs e)
@@ -105,12 +106,7 @@ namespace TIR
 
             
         }
-        private void Cleareview(object sender, RoutedEventArgs e)
-        {
-            reviewList.ItemsSource = new Queries().findReviewsByTir(selectedTir.nr_rejestracyjny_ciezarowki);
-            
-            refreschLists();
-        }
+    
 
         private void Deletereview(object sender, RoutedEventArgs e)
         {
@@ -125,8 +121,35 @@ namespace TIR
         }
 
 
+
         #endregion
 
 
+        private void SearchRegister(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteRegister(object sender, RoutedEventArgs e)
+        {
+            new Queries().deleteRegister(((Rejestr_napraw)registerList.SelectedItem).nr_faktury);
+        }
+
+        private void addRegister(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RegisterSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cargoList.SelectedIndex > -1)
+            {
+                registerDeleteButton.IsEnabled = true;
+            }
+            else
+            {
+                registerDeleteButton.IsEnabled = false;
+            }
+        }
     }
 }

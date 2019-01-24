@@ -298,5 +298,27 @@ namespace TIR
         #endregion
 
         
+        public IQueryable<Rejestr_napraw> findRegistersByTir(string nrTir)
+        {
+            var registers = (from r in dc.Rejestr_napraws
+                                   where r.nr_rejestracyjny_ciezarowki == nrTir
+                                   select r);
+            return registers;
+        }
+
+        public void addRegisterRepairs(Rejestr_napraw register)
+        {
+            dc.Rejestr_napraws.InsertOnSubmit(register);
+            dc.SubmitChanges();
+        }
+
+        public void deleteRegister(int id)
+        {
+            var register = (from r in dc.Rejestr_napraws
+                          where r.nr_faktury==id
+                          select r).First();
+            dc.Rejestr_napraws.DeleteOnSubmit(register);
+            dc.SubmitChanges();
+        }
     }
 }
