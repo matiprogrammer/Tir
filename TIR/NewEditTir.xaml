@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
-        Title="NewEditTir" Height="300" Width="400">
+        Title="NewEditTir" Height="290" Width="400">
     <Window.CommandBindings>
         <CommandBinding Command="local:Commands.AddEditTirCommand" Executed="AddEditTir_Executed" CanExecute="AddEditTir_CanExecute" />
     </Window.CommandBindings>

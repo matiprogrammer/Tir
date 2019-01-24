@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
-        Title="NewEditCompany" Height="180" Width="400">
+        Title="NewEditCompany" Height="170" Width="400">
     <Window.CommandBindings>
         <CommandBinding Command="local:Commands.AddEditCompanyCommmand" Executed="AddEditCompanyCommmand_Executed" CanExecute="AddEditCompanyCommmand_CanExecute"/>
     </Window.CommandBindings>

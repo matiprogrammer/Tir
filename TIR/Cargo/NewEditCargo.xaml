@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
-        Title="Dodaj ładunek" Height="auto" Width="450"  >
+        Title="Dodaj ładunek" Height="410" Width="450"  >
     <Window.CommandBindings>
         <CommandBinding Command="local:Commands.AddEditCargoCommand" CanExecute="AddEditCargo_CanExecute" Executed="AddEditCargo_Executed" />
     </Window.CommandBindings>
