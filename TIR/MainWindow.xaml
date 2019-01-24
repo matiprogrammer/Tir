@@ -12,8 +12,8 @@
         </DataTemplate>
     </Window.Resources>
     <Window.CommandBindings>
-        <CommandBinding Command="local:Commands.EditItemOnListCommand" Executed="EditItemOnList_Executed" CanExecute="EditItemOnList_CanExecute" />
-        <CommandBinding Command="local:Commands.DeleteItemFromListCommand" Executed="DeleteItemFromList_Executed" CanExecute="DeleteItemFromList_CanExecute" />
+        <CommandBinding Command="local:Commands.EditItemOnListCommand" Executed="EditItemOnList_Executed" CanExecute="EditDeleteItemOnList_CanExecute" />
+        <CommandBinding Command="local:Commands.DeleteItemFromListCommand" Executed="DeleteItemFromList_Executed" CanExecute="EditDeleteItemOnList_CanExecute" />
     </Window.CommandBindings>
     <TabControl Name="TabControll">
         <TabItem Width="180" Padding="5" Header="Lista Pracowników" Name="employes">

@@ -328,6 +328,17 @@ namespace TIR
         }
         #endregion
 
+        private void EditDeleteItemOnList_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            var param = (string)e.Parameter;
+            switch (param)
+            {
+                case "Company":
+                    e.CanExecute = CompanyList.SelectedIndex > -1 ? true : false;
+                    break;
+            }
+        }
+
         private void EditItemOnList_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             var param = (string)e.Parameter;
@@ -339,16 +350,6 @@ namespace TIR
             }
         }
 
-        private void EditItemOnList_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            var param = (string)e.Parameter;
-            switch (param)
-            {
-                case "Company":
-                    e.CanExecute = CompanyList.SelectedIndex > -1 ? true : false;
-                    break;
-            }
-        }
 
         private void DeleteItemFromList_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -357,17 +358,6 @@ namespace TIR
             {
                 case "Company":
                     DeleteCompany();
-                    break;
-            }
-        }
-
-        private void DeleteItemFromList_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            var param = (string)e.Parameter;
-            switch (param)
-            {
-                case "Company":
-                    e.CanExecute = CompanyList.SelectedIndex > -1 ? true : false;
                     break;
             }
         }
