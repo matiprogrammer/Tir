@@ -38,7 +38,7 @@ namespace TIR
 
 
             cargoList.ItemsSource = query.findCargosByTir(selectedTir.nr_rejestracyjny_ciezarowki);
-            reviewList.ItemsSource = query.findTirReviews(selectedTir.nr_rejestracyjny_ciezarowki);
+            reviewList.ItemsSource = query.findReviewsByTir(selectedTir.nr_rejestracyjny_ciezarowki);
             
 
         }
@@ -67,12 +67,21 @@ namespace TIR
 
         private void DeleteCargo(object sender, RoutedEventArgs e)
         {
-            
+            new Queries().deleteCargo((Ladunki)cargoList.SelectedItem);
         }
 
         private void CargoSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (cargoList.SelectedIndex > -1)
+            {
+                CargoDeleteButton.IsEnabled = true;
+                CargoEditButton.IsEnabled = true;
+            }
+            else
+            {
+                CargoDeleteButton.IsEnabled = false;
+                CargoEditButton.IsEnabled = false;
+            }
         }
         #endregion
 
@@ -82,27 +91,24 @@ namespace TIR
         {
 
         }
-
-        private void clearReview(object sender, RoutedEventArgs e)
+        private void searchReview(object sender, RoutedEventArgs e)
         {
 
         }
-
-        private void Clearreview(object sender, RoutedEventArgs e)
+        private void Cleareview(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Editreview(object sender, RoutedEventArgs e)
-        {
-
+            reviewList.ItemsSource = new Queries().findReviewsByTir(selectedTir.nr_rejestracyjny_ciezarowki);
+            reviewSearching.Text = "";
         }
 
         private void Deletereview(object sender, RoutedEventArgs e)
         {
-
+           // new Queries().deleteReview(selected)
         }
 
+
         #endregion
+
+
     }
 }
