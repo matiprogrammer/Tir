@@ -281,5 +281,58 @@ namespace TIR
         }
 
         #endregion
+        
+        #region Firmy Serwisujące
+        private void fillCompanyList()
+        {
+            CompanyList.ItemsSource = new Queries().getAllCompanies();
+        }
+
+        private void SearchCompany(object sender, RoutedEventArgs e)
+        {
+            CompanyList.ItemsSource = new Queries().findCompany(CompanySearching.Text);
+        }
+
+        private void ClearCompany(object sender, RoutedEventArgs e)
+        {
+            CompanyList.ItemsSource = new Queries().getAllCompanies();
+            CompanySearching.Text = "";
+        }
+
+        private void NewCompany(object sender, RoutedEventArgs e)
+        {
+            NewEditCompany newEditCompanyWindow = new NewEditCompany(false);
+            newEditCompanyWindow.ShowDialog();
+            fillCompanyList();
+        }
+
+        private void EditCompany(object sender, RoutedEventArgs e)
+        {
+            NewEditCompany newEditCompanyWindow = new NewEditCompany(true);
+            newEditCompanyWindow.ShowDialog();
+            fillCompanyList();
+        }
+
+        private void DeleteCompany(object sender, RoutedEventArgs e)
+        {
+            Firmy_serwisujace selectedCompany = (Firmy_serwisujace)CompanyList.SelectedItem;
+            new Queries().deleteCompany(selectedCompany);
+            fillCompanyList();
+        }
+
+        private void CompanySelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CompanyList.SelectedIndex > -1)
+            {
+                CompanyDeleteButton.IsEnabled = true;
+                CompanyEditButton.IsEnabled = true;
+            }
+            else
+            {
+                CompanyDeleteButton.IsEnabled = false;
+                CompanyEditButton.IsEnabled = false;
+            }
+        }
+        #endregion
     }
 }

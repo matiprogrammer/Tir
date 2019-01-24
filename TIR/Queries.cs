@@ -208,9 +208,52 @@ namespace TIR
         }
         #endregion
 
+        #region Firmy serwisujące
+        public IQueryable<Firmy_serwisujace> getAllCompanies()
+        {
+            var companies = from p in dc.Firmy_serwisujaces
+                            select p;
+            return companies;
+        }
+
+        public IQueryable<Firmy_serwisujace> findCompany(string inputValue)
+        {
+            int inputNumber = 0;
+            bool result = Int32.TryParse(inputValue, out inputNumber);
+
+            var searchCompanies = from p in dc.Firmy_serwisujaces
+                                  where p.nazwa.Contains(inputValue) || p.adres.Contains(inputValue) || p.nr_telefonu.Contains(inputValue) || p.nr_nip == inputNumber
+                                  select p;
+            return searchCompanies;
+        }
+
+        public IQueryable<Firmy_serwisujace> findCompanyByNIP(int givenNIP)
+        {
+            var searchCompanies = (from p in dc.Firmy_serwisujaces
+                                  where p.nr_nip == givenNIP
+                                  select p);
+            return searchCompanies;
+        }
+
+        public void addCompany(Firmy_serwisujace newCompany)
+        {
+            dc.Firmy_serwisujaces.InsertOnSubmit(newCompany);
+            dc.SubmitChanges();
+        }
+
+        public void deleteCompany(Firmy_serwisujace companyToDelete)
+        {
+            var companies = (from k in dc.Firmy_serwisujaces
+                             where k.nr_nip == companyToDelete.nr_nip
+                             select k).First();
+            dc.Firmy_serwisujaces.DeleteOnSubmit(companies);
+            dc.SubmitChanges();
+        }
+        #endregion
+
         #region Ładunki
 
-   
+
 
 
         #endregion
