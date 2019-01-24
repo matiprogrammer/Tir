@@ -99,9 +99,9 @@ namespace TIR
             if (!isEdit)
             {
                 Firmy_serwisujace newCompany = new Firmy_serwisujace();
-                newCompany.nazwa = CompanyNameBox.Text;
-                newCompany.adres = CompanyAddressBox.Text;
-                newCompany.nr_telefonu = CompanyPhoneNumberBox.Text;
+                newCompany.nazwa = nazwa;
+                newCompany.adres = adres;
+                newCompany.nr_telefonu = nr_telefonu;
 
                 query.addCompany(newCompany);
             }
@@ -111,9 +111,9 @@ namespace TIR
 
                 foreach (var company in modifiedCompany)
                 {
-                    company.nazwa = CompanyNameBox.Text;
-                    company.adres = CompanyAddressBox.Text;
-                    company.nr_telefonu = CompanyPhoneNumberBox.Text;
+                    company.nazwa = nazwa;
+                    company.adres = adres;
+                    company.nr_telefonu = nr_telefonu;
                 }
             }
             query.submitChanges();
