@@ -224,8 +224,15 @@ namespace TIR
 
         private void DeleteCustomer()
         {
+            Queries query = new Queries();
+
             Klienci selectedCustomer = (Klienci)CustomerList.SelectedItem;
-            new Queries().deleteCustomer(selectedCustomer);
+            if (!query.canDeleteCustomer(selectedCustomer))
+            {
+                query.deleteCustomer(selectedCustomer);
+                
+            }
+            else { MessageBox.Show("Nie można usunąc klienta, który jest w bazie ładunków. Usuń najpierw ładunki.", "Niedozwolona operacja", MessageBoxButton.OK, MessageBoxImage.Error); }
             fillCustomerList();
         }
 

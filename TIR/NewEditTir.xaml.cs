@@ -50,6 +50,7 @@ namespace TIR
                 producentBox.Text = selectedTir.producent;
                 colorBox.Text = selectedTir.kolor;
                 nrBox.Text = Convert.ToString(selectedTir.nr_rejestracyjny_ciezarowki);
+                nrBox.IsReadOnly = true;
                 var currentDriver= query.findEmployeByPesel(selectedTir.nr_pesel_kierowcy);
                 foreach (var driver in currentDriver)
                     driverBox.SelectedItem = driver;
@@ -82,6 +83,7 @@ namespace TIR
             {
                 MessageBox.Show("Podany numer rejestracyjny ciężarówki jest nieprawidłowy. Numer musi zawierać 2 lub 3 wielkie litery, przynajmniej 1 cyfrę a potem cyfry i/lub wielkie ltery do 10 znaków!",
                     "Nieprawidłowy format numery rejestracyjnego", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
             if(nr_rejestracyjny_ciezarowki.Length > 10)
@@ -104,31 +106,37 @@ namespace TIR
             if(kolor.Length < 3)
             {
                 MessageBox.Show("Nazwa koloru musi się składać z conajmniej 3 znaków!", "Zbyt krótka nazwa koloru", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
             if(kolor.Length > 15)
             {
                 MessageBox.Show("Podana nazwa koloru przekracza liczbę 15 znaków!", "Za długa nazwa koloru", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
             if (model.Length < 3)
             {
                 MessageBox.Show("Model ciężarówki musi się składać z conajmniej 3 znaków!", "Zbyt krótka nazwa modelu", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
             if (model.Length > 15)
             {
                 MessageBox.Show("Podana nazwa modelu ciężarówki przekracza liczbę 15 znaków!", "Za długa nazwa modelu", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
             if (producent.Length < 3)
             {
                 MessageBox.Show("Nazwa producenta musi się składać z conajmniej 3 znaków!", "Zbyt krótka nazwa producenta", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
             if (producent.Length > 15)
             {
                 MessageBox.Show("Podana nazwa producenta przekracza liczbę 15 znaków!", "Za długa nazwa producenta", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
             #endregion
 
@@ -142,6 +150,7 @@ namespace TIR
                 tir.model = model;
                 tir.producent = producent;
                 tir.kolor = kolor;
+                if(driverBox.SelectedValue!=null)
                 tir.nr_pesel_kierowcy = driverBox.SelectedValue.ToString();
                 query.addTir(tir);
 
@@ -152,7 +161,7 @@ namespace TIR
 
                 foreach (var tir in update)
                 {
-                    tir.nr_rejestracyjny_ciezarowki = nr_rejestracyjny_ciezarowki;
+                    //tir.nr_rejestracyjny_ciezarowki = nr_rejestracyjny_ciezarowki;
                     tir.rocznik = rocznik;
                     tir.maksymalne_dopuszczalne_obciazenie = maksymalne_dopuszczalne_obciazenie;
                     tir.model = model;

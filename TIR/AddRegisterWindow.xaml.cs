@@ -45,6 +45,8 @@ namespace TIR
             new Queries().addPart(newPart);
             addedParts.Add(newPart);
             partsList.Items.Refresh();
+            partPriceBox.Text = "";
+            partNameBox.Text = "";
             
         }
 

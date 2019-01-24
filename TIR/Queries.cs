@@ -222,6 +222,14 @@ namespace TIR
             dc.Kliencis.DeleteOnSubmit(customers);
             dc.SubmitChanges();
         }
+
+        public bool canDeleteCustomer(Klienci customerToDelete)
+        {
+            var posibility = (from k in dc.Ladunkis
+                              where k.id_nadawcy == customerToDelete.id_klienta || k.id_odbiorcy == customerToDelete.id_klienta
+                              select k).Any();
+            return posibility;
+        }
         #endregion
 
         #region Firmy serwisujące
