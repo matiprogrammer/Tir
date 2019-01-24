@@ -196,12 +196,14 @@ namespace TIR
         {
             NewEditCargo newCargoWindow = new NewEditCargo(false);
             newCargoWindow.ShowDialog();
+            fillCargoList();
         }
 
         private void EditCargo(object sender, RoutedEventArgs e)
         {
             NewEditCargo newCargoWindow = new NewEditCargo(true);
             newCargoWindow.ShowDialog();
+            fillCargoList();
         }
 
         private void DeleteCargo(object sender, RoutedEventArgs e)

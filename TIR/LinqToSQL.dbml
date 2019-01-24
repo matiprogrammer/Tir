@@ -47,16 +47,16 @@
   <Table Name="dbo.Ladunki" Member="Ladunkis">
     <Type Name="Ladunki">
       <Column Name="id_ladunku" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="waga" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="nazwa_ladunku" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="rodzaj_ladunku" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="adres_startowy" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="adres_docelowy" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="data_nadania" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
-      <Column Name="data_odbioru" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
-      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="id_nadawcy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="id_odbiorcy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="waga" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="nazwa_ladunku" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rodzaj_ladunku" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="adres_startowy" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="adres_docelowy" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="data_nadania" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="data_odbioru" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="nr_rejestracyjny_ciezarowki" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="id_nadawcy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="id_odbiorcy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Association Name="Klienci_Ladunki" Member="Klienci" ThisKey="id_nadawcy" OtherKey="id_klienta" Type="Klienci" IsForeignKey="true" />
       <Association Name="Klienci_Ladunki1" Member="Klienci1" ThisKey="id_odbiorcy" OtherKey="id_klienta" Type="Klienci" IsForeignKey="true" />
       <Association Name="Ciezarowki_Ladunki" Member="Ciezarowki" ThisKey="nr_rejestracyjny_ciezarowki" OtherKey="nr_rejestracyjny_ciezarowki" Type="Ciezarowki" IsForeignKey="true" />

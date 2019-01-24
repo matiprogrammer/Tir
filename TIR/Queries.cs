@@ -150,6 +150,15 @@ namespace TIR
                         select p;
             return cargo;
         }
+
+        public IQueryable<Ladunki> findCargoById(int id)
+        {
+            var cargo = (from p in dc.Ladunkis
+                          where p.id_ladunku == id
+                          select p);
+            Console.WriteLine(id);
+            return cargo;
+        }
         public void addCargo(Ladunki newCargo)
         {
             dc.Ladunkis.InsertOnSubmit(newCargo);
@@ -179,7 +188,7 @@ namespace TIR
             bool result = Int32.TryParse(inputValue, out inputNumber);
 
             var searchCustomers = from p in dc.Kliencis
-                                 where p.nazwisko.Contains(inputValue) || p.imie.Contains(inputValue) || p.nr_telefonu.Contains(inputValue) || p.id_klienta == inputNumber
+                                 where p.nazwisko.Contains(inputValue) || p.imie.Contains(inputValue) || p.adres_zamieszkania.Contains(inputValue)
                                   select p;
             return searchCustomers;
         }
@@ -195,7 +204,7 @@ namespace TIR
         public void addCustomer(Klienci newCustomer)
         {
             dc.Kliencis.InsertOnSubmit(newCustomer);
-            dc.SubmitChanges();
+            //dc.SubmitChanges();
         }
 
         public void deleteCustomer(Klienci customerToDelete)

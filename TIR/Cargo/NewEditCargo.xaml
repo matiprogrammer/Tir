@@ -56,7 +56,7 @@
             
         <TextBlock Text="Nadawca:" Margin="6" HorizontalAlignment="Left" Grid.Row="6"/>
         <StackPanel  Grid.Column="1" Margin="3" Grid.Row="6" Orientation="Horizontal">
-        <Button Name="senderButton" HorizontalAlignment="Left" Height="24" VerticalAlignment="Bottom" Click="senderButton_Click" >Wybierz</Button>
+        <Button Padding="3" Name="senderButton" HorizontalAlignment="Left" Height="24" VerticalAlignment="Bottom" Click="senderButton_Click" >Wybierz</Button>
             <TextBlock Name="choosenSender" Margin="4"></TextBlock>
         </StackPanel>
             
@@ -91,7 +91,7 @@
 
             <TextBlock Text="Odbiorca:" Margin="6" HorizontalAlignment="Left" Grid.Row="8"/>
             <StackPanel  Grid.Column="1" Margin="3" Grid.Row="8" Orientation="Horizontal">
-                <Button Name="recipientButton" HorizontalAlignment="Left" Click="recipientButton_Click" >Wybierz</Button>
+                <Button Padding="3" Name="recipientButton" HorizontalAlignment="Left" Click="recipientButton_Click" >Wybierz</Button>
                 <TextBlock Name="choosenRecipient" Margin="4"></TextBlock>
             </StackPanel>
         <Grid Name="recipientGrid" Grid.ColumnSpan="2" Margin="3"  Grid.Row="9" Visibility="Hidden" Height="0">

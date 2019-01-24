@@ -1136,7 +1136,7 @@ namespace TIR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_waga", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_waga", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
 		public int waga
 		{
 			get
@@ -1156,7 +1156,7 @@ namespace TIR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nazwa_ladunku", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nazwa_ladunku", DbType="VarChar(30) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string nazwa_ladunku
 		{
 			get
@@ -1176,7 +1176,7 @@ namespace TIR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rodzaj_ladunku", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rodzaj_ladunku", DbType="VarChar(20) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string rodzaj_ladunku
 		{
 			get
@@ -1196,7 +1196,7 @@ namespace TIR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_adres_startowy", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_adres_startowy", DbType="VarChar(100) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string adres_startowy
 		{
 			get
@@ -1216,7 +1216,7 @@ namespace TIR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_adres_docelowy", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_adres_docelowy", DbType="VarChar(100) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string adres_docelowy
 		{
 			get
@@ -1236,7 +1236,7 @@ namespace TIR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data_nadania", DbType="SmallDateTime NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data_nadania", DbType="SmallDateTime NOT NULL", UpdateCheck=UpdateCheck.Never)]
 		public System.DateTime data_nadania
 		{
 			get
@@ -1256,7 +1256,7 @@ namespace TIR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data_odbioru", DbType="SmallDateTime")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data_odbioru", DbType="SmallDateTime", UpdateCheck=UpdateCheck.Never)]
 		public System.Nullable<System.DateTime> data_odbioru
 		{
 			get
@@ -1276,7 +1276,7 @@ namespace TIR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nr_rejestracyjny_ciezarowki", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nr_rejestracyjny_ciezarowki", DbType="VarChar(10) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string nr_rejestracyjny_ciezarowki
 		{
 			get
@@ -1300,7 +1300,7 @@ namespace TIR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_nadawcy", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_nadawcy", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
 		public int id_nadawcy
 		{
 			get
@@ -1324,7 +1324,7 @@ namespace TIR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_odbiorcy", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_odbiorcy", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
 		public int id_odbiorcy
 		{
 			get
