@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:TIR"
         mc:Ignorable="d"
         Title="NewEditCustomer" Height="auto" Width="400">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Commands.AddEditCustomerCommand" Executed="AddEditCustomer_Executed" CanExecute="AddEditCustomer_CanExecute"/>
+    </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -39,7 +42,7 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <Button Content="Dodaj"  Name="add" Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Click="AddCustomer"/>
+            <Button Content="Dodaj"  Name="add" Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Command="local:Commands.AddEditCustomerCommand"/>
             <Button Content="Anuluj"  Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Click="Anuluj"/>
         </Grid>
     </Grid>
