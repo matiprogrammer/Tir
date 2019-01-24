@@ -314,11 +314,71 @@ namespace TIR
 
         public void deleteRegister(int id)
         {
+
+
             var register = (from r in dc.Rejestr_napraws
                           where r.nr_faktury==id
                           select r).First();
             dc.Rejestr_napraws.DeleteOnSubmit(register);
             dc.SubmitChanges();
+        }
+
+        public Rejestr_napraw getLastRegister()
+        {
+            var lastRegister = (from w in dc.Rejestr_napraws
+                               orderby w.nr_faktury descending
+                               select w).First();
+            return lastRegister;
+        }
+
+        #region Czesci
+        public void addPart(Czesci part)
+        {
+            dc.Czescis.InsertOnSubmit(part);
+            dc.SubmitChanges();
+        }
+
+        public void deletePart(int id_part)
+        {
+            var part = (from r in dc.Czescis
+                            where r.id_czesci == id_part
+                            select r).First();
+            dc.Czescis.DeleteOnSubmit(part);
+            dc.SubmitChanges();
+        }
+
+        public Czesci getLastAddedPart()
+        {
+            var lastPart = (from c in dc.Czescis
+                           orderby c.id_czesci descending
+                           select c).First();
+            return lastPart;
+        }
+
+        
+        #endregion
+
+       public void addChangedPart(Wymienione_czesci part)
+        {
+            dc.Wymienione_czescis.InsertOnSubmit(part);
+            dc.SubmitChanges();
+        }
+
+        public void deleteChangedPart(int id_part, int nr_faktury)
+        {
+            var part = (from r in dc.Wymienione_czescis
+                        where r.id_czesci == id_part && r.nr_faktury==nr_faktury
+                        select r).First();
+            dc.Wymienione_czescis.DeleteOnSubmit(part);
+            dc.SubmitChanges();
+        }
+
+        public IQueryable<Wymienione_czesci> FindChangedParts(int nr_faktury)
+        {
+            var changedParts = from w in dc.Wymienione_czescis
+                              where w.nr_faktury ==nr_faktury
+                              select w;
+            return changedParts;
         }
     }
 }

@@ -132,17 +132,27 @@ namespace TIR
 
         private void DeleteRegister(object sender, RoutedEventArgs e)
         {
-            new Queries().deleteRegister(((Rejestr_napraw)registerList.SelectedItem).nr_faktury);
+            Queries query = new Queries();
+           var changedParts= query.FindChangedParts(((Rejestr_napraw)registerList.SelectedItem).nr_faktury);
+            foreach(var part in changedParts)
+            {
+                query.deleteChangedPart(part.id_czesci, ((Rejestr_napraw)registerList.SelectedItem).nr_faktury);
+                query.deletePart(part.id_czesci);
+            }
+            query.deleteRegister(((Rejestr_napraw)registerList.SelectedItem).nr_faktury);
+            refreschLists();
         }
 
         private void addRegister(object sender, RoutedEventArgs e)
         {
-
+            AddRegisterWindow addRegisterWindow = new AddRegisterWindow(selectedTir);
+            addRegisterWindow.ShowDialog();
+            refreschLists();
         }
 
         private void RegisterSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cargoList.SelectedIndex > -1)
+            if (registerList.SelectedIndex > -1)
             {
                 registerDeleteButton.IsEnabled = true;
             }

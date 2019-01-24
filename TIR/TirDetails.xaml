@@ -145,10 +145,10 @@
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
-                                    <GridViewColumn Width="auto" Header="ID ładunku" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
-                                    <GridViewColumn Width="auto" Header="Nazwa" DisplayMemberBinding="{Binding data_naprawy}"/>
-                                    <GridViewColumn Width="auto" Header="Rodzaj" DisplayMemberBinding="{Binding nr_nip_serwisu}" />
-                                    <GridViewColumn Width="auto" Header="Waga" DisplayMemberBinding="{Binding koszt_robocizny}"/>
+                                 
+                                    <GridViewColumn Width="auto" Header="Data naprawy" DisplayMemberBinding="{Binding data_naprawy}"/>
+                                    <GridViewColumn Width="auto" Header="Nr nip serwisu" DisplayMemberBinding="{Binding nr_nip_serwisu}" />
+                                    <GridViewColumn Width="auto" Header="Koszt robocizny" DisplayMemberBinding="{Binding koszt_robocizny}"/>
                                 </GridView.Columns>
                             </GridView>
                         </ListView.View>

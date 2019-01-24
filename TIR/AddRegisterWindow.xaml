@@ -8,7 +8,7 @@
         Language="pl"
         Title="Rejsetr napraw" Height="450" Width="420">
     <Grid>
-        <!--<Grid>
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -28,23 +28,25 @@
             <TextBlock Text="Data_naprawy:" Margin="6" HorizontalAlignment="Left" Grid.Row="2"/>
             <DatePicker Grid.Column="1" Margin="3" Grid.Row="2" Name="repairDateBox" VerticalContentAlignment="Center"></DatePicker>
             <TextBlock Text="Firma:" Margin="6" HorizontalAlignment="Left" Grid.Row="3"/>
-            <TextBox Grid.Column="1" Margin="3" Grid.Row="3" Name="CompanyPhoneNumberBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
-            
-            <ComboBox Grid.Column="1" Margin="3" Grid.Row="3" Name="companyBox" VerticalContentAlignment="Center"  SelectedValuePath="nr_faktury"
+
+
+            <ComboBox Grid.Column="1" Margin="3" Grid.Row="3" Name="companyBox" VerticalContentAlignment="Center"  SelectedValuePath="nr_nip"
                   TextSearch.TextPath="nazwa" IsSynchronizedWithCurrentItem="True" IsTextSearchEnabled="True">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="1" Padding="3">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Path=nr_pesel,StringFormat=' {0}'}" />
-                               
+                                <TextBlock Text="{Binding Path=nr_nip,StringFormat='NIP: {0}'}" />
+                                <TextBlock Text="{Binding Path=nazwa,StringFormat=' {0}'}" />
+
                             </StackPanel>
                         </Border>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <TextBlock Text="Koszt:" Margin="6" HorizontalAlignment="Left" Grid.Row="4"/>
+            <TextBlock Text="Koszt robocizny:" Margin="6" HorizontalAlignment="Left" Grid.Row="4"/>
             <TextBox Grid.Column="1" Margin="3" Grid.Row="4" Name="priceBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
+
 
             <Grid Grid.Row="5" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
@@ -59,27 +61,30 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
+                <TextBlock Text="Nazwa części:" Margin="6" HorizontalAlignment="Left" Grid.Row="0"/>
+                <TextBox Grid.ColumnSpan="2" Grid.Column="1" Margin="3" Grid.Row="0" Height="30" Name="partNameBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
+                <TextBlock Text="Koszt części:" Margin="6" HorizontalAlignment="Left" Grid.Row="1"/>
+                <TextBox Grid.ColumnSpan="3" Grid.Column="1" Margin="3" Grid.Row="1" Height="30" Name="partPriceBox" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
+                <Button Content="Dodaj część" Margin="6" Padding="3" Grid.Row="1" Grid.Column="6"  Click="NewPart" />
 
-                <TextBox Name="EmployeSearching" Grid.Row="0" Grid.Column="0" Margin="5,9" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
-                <Button Content="Szukaj" Margin="6,6,0,6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchEmploye" />
-                <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="ClearEmploye" />
-                <Button Content="Dodaj część" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="NewEmploye" />
-                <ListView Name="employeList" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
+                <ListView Name="partsList" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="True" Grid.Row="2" Grid.ColumnSpan="7">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
-                                <GridViewColumn Width="auto" Header="Pesel" DisplayMemberBinding="{Binding nr_pesel}"/>
-                                <GridViewColumn Width="auto" Header="Nazwisko" DisplayMemberBinding="{Binding nazwisko}"/>
+                                <GridViewColumn Width="100" Header="Nazwa" DisplayMemberBinding="{Binding nazwa_czesci}"/>
+                                <GridViewColumn Width="100" Header="Koszt" DisplayMemberBinding="{Binding koszt_czesci}"/>
 
                             </GridView.Columns>
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Content="Edytuj" Name="EmployeEditButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="5" Command="local:Commands.EditItemOnListCommand" CommandParameter="Employe" />
-                <Button Content="Usuń" Name="EmployeDeleteButton" Margin="6" Padding="3" Grid.Row="0" Grid.Column="6"  Command="local:Commands.DeleteItemFromListCommand" CommandParameter="Employe" />
+                <Button Content="Usuń część" Name="PartDeleteButton" Margin="6" Padding="3" Grid.Row="3" Grid.Column="6" Click="NewPart" />
+
             </Grid>
 
             <Grid Grid.Column="1" Grid.Row="7">
@@ -91,10 +96,10 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Button Content="Dodaj"  Name="addRegister" Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0"/>
+                <Button Content="Zatwierdz"  Name="addRegister" Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Click="SubmitRegister"/>
                 <Button Content="Anuluj"  Margin="10" Padding="3" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Click="Anuluj"/>
             </Grid>
-            
-        </Grid>-->
+
+        </Grid>
     </Grid>
 </Window>
