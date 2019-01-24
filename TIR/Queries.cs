@@ -193,11 +193,11 @@ namespace TIR
             return searchCustomers;
         }
 
-        public IQueryable<Klienci> findCustomerByID(int givenID)
+        public Klienci findCustomerByID(int givenID)
         {
             var searchCustomer = (from p in dc.Kliencis
                                   where p.id_klienta == givenID
-                                  select p);
+                                  select p).First();
             return searchCustomer;
         }
 

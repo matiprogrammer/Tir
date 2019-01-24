@@ -57,13 +57,12 @@ namespace TIR
             {
                 var modifiedCustomer = query.findCustomerByID(selectedCustomer.id_klienta);
 
-                foreach (var customer in modifiedCustomer)
-                {
-                    customer.imie = CustomerFirstNameBox.Text;
-                    customer.nazwisko = CustomerLastNameBox.Text;
-                    customer.adres_zamieszkania = CustomerAddressBox.Text;
-                    customer.nr_telefonu = CustomerPhoneNumberBox.Text;
-                }
+             
+                    modifiedCustomer.imie = CustomerFirstNameBox.Text;
+                    modifiedCustomer.nazwisko = CustomerLastNameBox.Text;
+                    modifiedCustomer.adres_zamieszkania = CustomerAddressBox.Text;
+                    modifiedCustomer.nr_telefonu = CustomerPhoneNumberBox.Text;
+                
             }
             query.submitChanges();
 

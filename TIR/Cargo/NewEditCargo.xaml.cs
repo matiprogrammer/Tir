@@ -48,12 +48,10 @@ namespace TIR
                     tirComboBox.SelectedItem = currentTir;
 
                 var currentSender = query.findCustomerByID(selectedCargo.id_nadawcy);
-                foreach (var sender in currentSender)
-                    choosenSender.Text = sender.imie+" " +sender.nazwisko + " "+sender.adres_zamieszkania;
+                    choosenSender.Text = currentSender.imie+" " + currentSender.nazwisko + " "+ currentSender.adres_zamieszkania;
 
                 var currentRecipient = query.findCustomerByID(selectedCargo.id_odbiorcy);
-                foreach (var recipient in currentRecipient)
-                    choosenRecipient.Text = recipient.imie + " " + recipient.nazwisko + " " + recipient.adres_zamieszkania;
+                    choosenRecipient.Text = currentRecipient.imie + " " + currentRecipient.nazwisko + " " + currentRecipient.adres_zamieszkania;
 
                 sendDatePicker.Text = selectedCargo.data_nadania.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
                 receiveDatePicker.Text = selectedCargo.data_odbioru?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
@@ -150,6 +148,7 @@ namespace TIR
                 newCargo.id_odbiorcy = ((Klienci)recipientList.SelectedItem).id_klienta;
                 newCargo.data_nadania = DateTime.ParseExact(sendDatePicker.Text, "yyyy-MM-dd",
                                            System.Globalization.CultureInfo.InvariantCulture);
+                if(receiveDatePicker.Text!="")
                 newCargo.data_odbioru = DateTime.ParseExact(receiveDatePicker.Text, "yyyy-MM-dd",
                                            System.Globalization.CultureInfo.InvariantCulture);
                 query.addCargo(newCargo);

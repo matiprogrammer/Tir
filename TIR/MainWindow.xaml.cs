@@ -33,6 +33,7 @@ namespace TIR
             fillTirList();
             fillCustomerList();
             fillCargoList();
+            fillCompanyList();
         }
 
         private void SearchEmploye(object sender, RoutedEventArgs e)
