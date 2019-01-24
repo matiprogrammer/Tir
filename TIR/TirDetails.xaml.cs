@@ -37,11 +37,11 @@ namespace TIR
                 kierowcaTextBox.Text = driver.imie + " "+driver.nazwisko;
 
 
-            refreshLists();
+            refreschLists();
             
 
         }
-        public void refreshLists()
+        public void refreschLists()
         {
             Queries query = new Queries();
             cargoList.ItemsSource = query.findCargosByTir(selectedTir.nr_rejestracyjny_ciezarowki);
@@ -61,7 +61,7 @@ namespace TIR
 
         private void ClearCargo(object sender, RoutedEventArgs e)
         {
-            refreshLists();
+            refreschLists();
             CargoSearching.Text = "";
         }
 
@@ -69,13 +69,13 @@ namespace TIR
         {
             NewEditCargo editCargoWindow = new NewEditCargo(true,(Ladunki)cargoList.SelectedItem);
             editCargoWindow.ShowDialog();
-            refreshLists();
+            refreschLists();
         }
 
         private void DeleteCargo(object sender, RoutedEventArgs e)
         {
             new Queries().deleteCargo((Ladunki)cargoList.SelectedItem);
-            refreshLists();
+            refreschLists();
         }
 
         private void CargoSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -109,17 +109,19 @@ namespace TIR
         {
             reviewList.ItemsSource = new Queries().findReviewsByTir(selectedTir.nr_rejestracyjny_ciezarowki);
             
-            refreshLists();
+            refreschLists();
         }
 
         private void Deletereview(object sender, RoutedEventArgs e)
         {
             new Queries().deleteReview(selectedTir.nr_rejestracyjny_ciezarowki, ((Przeglady)reviewList.SelectedItem).data_przegladu);
-            refreshLists();
+            refreschLists();
         }
-        private void Addeview(object sender, RoutedEventArgs e)
+        private void Addreview(object sender, RoutedEventArgs e)
         {
-
+            AddReviewWindow newReviewWindow = new AddReviewWindow(selectedTir);
+            newReviewWindow.ShowDialog();
+            refreschLists();
         }
 
 

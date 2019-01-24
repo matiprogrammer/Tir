@@ -88,7 +88,8 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="54.557"/>
                         <ColumnDefinition Width="155.443"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="101*"/>
+                        <ColumnDefinition Width="312*"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
@@ -101,17 +102,17 @@
                     </Grid.RowDefinitions>
 
 
-                    
-                    <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="Cleareview" />
-                    <Button Content="Dodaj" Name="reviewEditButton"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="Addeview" />
-                    <Button Content="Usuń" Name="reviewDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="6"  Click="Deletereview" />
-                    <ListView Name="reviewList" HorizontalContentAlignment="Stretch" SelectionChanged="reviewSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
+
+                    <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="Cleareview" />
+                    <Button Content="Dodaj" Name="reviewEditButton"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="5"  Click="Addreview" Grid.ColumnSpan="2" />
+                    <Button Content="Usuń" Name="reviewDeleteButton" IsEnabled="False"  Margin="6" Padding="3" Grid.Row="0" Grid.Column="7"  Click="Deletereview" />
+                    <ListView Name="reviewList" HorizontalContentAlignment="Stretch" SelectionChanged="reviewSelectionChanged" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="8">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
-                                    <GridViewColumn Width="auto" Header="ID ładunku" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
-                                    <GridViewColumn Width="auto" Header="Nazwa" DisplayMemberBinding="{Binding data_przegladu}"/>
-                                    <GridViewColumn Width="auto" Header="Rodzaj" DisplayMemberBinding="{Binding data_nastepnego_serwisu}" />
+                                    <GridViewColumn Width="auto" Header="Ciezarowka" DisplayMemberBinding="{Binding nr_rejestracyjny_ciezarowki}"/>
+                                    <GridViewColumn Width="auto" Header="Data przegldu" DisplayMemberBinding="{Binding data_przegladu}"/>
+                                    <GridViewColumn Width="auto" Header="Data nastepnego przegladu" DisplayMemberBinding="{Binding data_nastepnego_serwisu}" />
                                 </GridView.Columns>
                             </GridView>
                         </ListView.View>

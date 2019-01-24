@@ -225,6 +225,7 @@ namespace TIR
         #endregion
 
         #region Firmy serwisujące
+
         public IQueryable<Firmy_serwisujace> getAllCompanies()
         {
             var companies = from p in dc.Firmy_serwisujaces
@@ -286,10 +287,16 @@ namespace TIR
             dc.SubmitChanges();
         }
 
+        public void addReview(Przeglady review)
+        {
+            dc.Przegladies.InsertOnSubmit(review);
+            dc.SubmitChanges();
+        }
 
-        
 
 
         #endregion
+
+        
     }
 }
