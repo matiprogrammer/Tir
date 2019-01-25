@@ -78,7 +78,6 @@
 
                 <TextBox Name="CargoSearching" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" Width="auto" MinWidth="200"/>
                 <Button Content="Szukaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  Click="SearchCargo" />
-                <Slider Margin="6" Name="slider"  Padding="3" Grid.Row="0" Grid.Column="2" />
                 <Button Content="Wyczyść" Margin="6" Padding="3" Grid.Row="0" Grid.Column="3"  Click="ClearCargo" HorizontalAlignment="Right"/>
                 <Button Content="Dodaj" Margin="6" Padding="3" Grid.Row="0" Grid.Column="4"  Click="NewCargo" />
                 <ListView Name="cargoList" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="7">
