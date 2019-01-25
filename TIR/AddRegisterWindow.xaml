@@ -83,7 +83,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Content="Usuń część" Name="PartDeleteButton" Margin="6" Padding="3" Grid.Row="3" Grid.Column="6" Click="NewPart" />
+                <Button Content="Usuń część" Name="PartDeleteButton" Margin="6" Padding="3" Grid.Row="3" Grid.Column="6" Click="DeletePart" />
 
             </Grid>
 

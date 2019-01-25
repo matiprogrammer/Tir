@@ -85,7 +85,7 @@ namespace TIR
         }
         private void searchSenderButton(object sender, RoutedEventArgs e)
         {
-
+            recipientList.ItemsSource = new Queries().findCustomer(senderSearching.Text);
         }
         private void recipientButton_Click(object sender, RoutedEventArgs e)
         {

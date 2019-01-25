@@ -41,7 +41,7 @@ namespace TIR
         {
             Czesci newPart = new Czesci();
             newPart.nazwa_czesci = partNameBox.Text;
-            newPart.koszt_czesci = decimal.Parse(priceBox.Text, CultureInfo.InvariantCulture);
+            newPart.koszt_czesci = decimal.Parse(partPriceBox.Text, CultureInfo.InvariantCulture);
             new Queries().addPart(newPart);
             addedParts.Add(newPart);
             partsList.Items.Refresh();
@@ -78,6 +78,14 @@ namespace TIR
             }
 
             this.Close();
+        }
+
+        private void DeletePart(object sender, RoutedEventArgs e)
+        {
+            new Queries().deletePart(((Czesci)partsList.SelectedItem).id_czesci);
+            addedParts.Remove(((Czesci)partsList.SelectedItem));
+            //partsList.Items.Remove((partsList.SelectedItem));
+            partsList.Items.Refresh();
         }
     }
 }
