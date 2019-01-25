@@ -33,7 +33,7 @@
         <TextBlock Text="Imie:" Margin="6" HorizontalAlignment="Left" Grid.Row="2"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="2" Name="nameBox" VerticalContentAlignment="Center"/>
         <TextBlock Text="Pensja: [zł]" Margin="6" HorizontalAlignment="Left" Grid.Row="3"/>
-        <TextBox Grid.Column="1" Margin="3" Grid.Row="3" Name="salaryBox" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Column="1" Margin="3" Grid.Row="3" Name="salaryBox" VerticalContentAlignment="Center" PreviewTextInput="SalaryValidationTextBox"/>
         <TextBlock Text="Stanowisko:" Margin="6" HorizontalAlignment="Left" Grid.Row="4"/>
         <TextBox Grid.Column="1" Margin="3" Grid.Row="4" Name="jobBox" VerticalContentAlignment="Center"/>
         <TextBlock Text="Adres zamieszkania:" Margin="6" HorizontalAlignment="Left" Grid.Row="5"/>

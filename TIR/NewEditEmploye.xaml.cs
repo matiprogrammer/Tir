@@ -31,6 +31,7 @@ namespace TIR
 
             if (isEdit)
             {
+                peselBox.IsReadOnly = true;
                 this.Title = "Edytuj pracownika";
                 this.selectedEmploye =(Pracownicy)((MainWindow)Application.Current.MainWindow).employeList.SelectedItem;
                 peselBox.Text = selectedEmploye.nr_pesel;
@@ -54,11 +55,16 @@ namespace TIR
             Regex regex = new Regex("[^0-9]");
             e.Handled = regex.IsMatch(e.Text);
         }
+        private void SalaryValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9].");
+            e.Handled = regex.IsMatch(e.Text);
+        }
 
         private void AddEditEmploye_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = string.IsNullOrEmpty(peselBox.Text) || string.IsNullOrEmpty(surnameBox.Text) || string.IsNullOrEmpty(nameBox.Text) ||
-                !decimal.TryParse(salaryBox.Text, out pensja) || string.IsNullOrEmpty(jobBox.Text) || string.IsNullOrEmpty(address1Box.Text) ||
+                string.IsNullOrEmpty(jobBox.Text) || string.IsNullOrEmpty(address1Box.Text) ||
                 string.IsNullOrEmpty(address2Box.Text) ? false : true;
         }
 

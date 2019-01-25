@@ -46,6 +46,16 @@ namespace TIR
             dc.Pracownicies.DeleteOnSubmit(employes);
             dc.SubmitChanges();
         }
+
+        public IQueryable<Pracownicy> getFreeDrivers()
+        {
+            var searchBusyDrivers = from p in dc.Ciezarowkis
+                                    select p.nr_pesel_kierowcy;
+            var search = from p in dc.Pracownicies
+                         where p.stanowisko.ToLower() == "kierowca" && !searchBusyDrivers.Contains(p.nr_pesel)
+                         select p;
+            return search;
+        }
         public IQueryable<Pracownicy> getAllEmployes()
         {
             var employes = from p in dc.Pracownicies

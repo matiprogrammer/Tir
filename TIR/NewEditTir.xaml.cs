@@ -33,8 +33,9 @@ namespace TIR
             Queries query = new Queries();
             this.isEdit = isEdit;
             InitializeComponent();
-                driverBox.ItemsSource = query.findEmployeByJob("kierowca");
-  
+             driverBox.ItemsSource = query.getFreeDrivers(); 
+            
+            
 
             if (isEdit)
             {
@@ -42,8 +43,14 @@ namespace TIR
                 
                 Ciezarowki selectedTir =(Ciezarowki)((MainWindow)Application.Current.MainWindow).tirList.SelectedItem;
                 string peseltmp = selectedTir.nr_pesel_kierowcy;
-              
-
+                var freeDrivers = query.getFreeDrivers();
+                var freeDriverss = freeDrivers.ToList();
+                foreach (var driver in query.findEmployeByPesel(selectedTir.nr_pesel_kierowcy))
+                {
+                    freeDriverss.Add(driver);
+                    Console.WriteLine(driver.nr_pesel);
+                }
+                driverBox.ItemsSource = freeDriverss;
                 yearBox.Text = Convert.ToString(selectedTir.rocznik); 
                 loadBox.Text = Convert.ToString(selectedTir.maksymalne_dopuszczalne_obciazenie);
                 modelBox.Text = selectedTir.model;
